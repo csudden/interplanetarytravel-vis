@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CameraFollowBehaviour.cs" />
+     <Compile Include="Assets\CoordinateSystemCreator.cs" />
+     <Compile Include="Assets\CoordinateSystemScalingBehaviour.cs" />
      <Compile Include="Assets\MovementBehaviour.cs" />
  <Reference Include="Vuforia.UnityExtensions">
  <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
