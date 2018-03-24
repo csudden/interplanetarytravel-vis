@@ -1,0 +1,96 @@
+newmtl Wing0
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0.954141 0.954141 0.954141
+map_Kd Wing0.jpg
+newmtl Wing1
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0.954141 0.954141 0.954141
+map_Kd Wing1_1.jpg
+newmtl Black2
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0 0 0
+map_Kd Black2_2.jpg
+newmtl Aft_Hull
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0.912279 0.912279 0.912279
+map_Kd Aft_Hull_3.jpg
+newmtl Black
+Ka 0 0 0
+Ns 11.0232
+Ks 0 0 0
+Kd 0.027451 0.027451 0.027451
+map_Kd Black_4.jpg
+newmtl Black_Matte
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0 0 0
+map_Kd Black_Matte_5.jpg
+newmtl Black_Matte1
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0 0 0
+map_Kd Black_Matte1_6.jpg
+newmtl Cockpit
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0.322642 0.221756 0.224372
+map_Kd Cockpit_7.jpg
+newmtl Fore_Hull_Side
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0.960756 0.960756 0.960756
+map_Kd Fore_Hull_Side_8.jpg
+newmtl Fore_Hull_Top
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0.929384 0.929384 0.929384
+map_Kd Fore_Hull_Top_9.jpg
+newmtl Hatch
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0.852249 0.852249 0.852249
+map_Kd Hatch_10.jpg
+newmtl Logo_Side
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0.442276 0.502731 0.75635
+map_Kd Logo_Side_11.jpg
+newmtl Ribs
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0.835475 0.835475 0.835475
+map_Kd Ribs_12.jpg
+newmtl Side
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0.913068 0.913068 0.913068
+map_Kd Side_13.jpg
+newmtl Top
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0.918597 0.918597 0.918597
+map_Kd Top_14.jpg
+newmtl Window
+Ka 0 0 0
+Ns 11.0232
+Ks 0.898039 0.898039 0.898039
+Kd 0.494833 0.747658 0.570886
+map_Kd Window_15.jpg
