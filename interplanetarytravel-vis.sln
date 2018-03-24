@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "interplanetarytravel-vis", "Assembly-CSharp.csproj", "{D6E5CCBF-8C55-9E46-A3FE-9DFB50343DAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "interplanetarytravel-vis", "com.unity.postprocessing.Runtime.csproj", "{AB36F43A-802C-4574-D532-A0827414E1F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "interplanetarytravel-vis", "com.unity.postprocessing.Editor.csproj", "{4BEBF9B0-C74E-0E93-C463-FF7FEC92F8B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{D6E5CCBF-8C55-9E46-A3FE-9DFB50343DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6E5CCBF-8C55-9E46-A3FE-9DFB50343DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6E5CCBF-8C55-9E46-A3FE-9DFB50343DAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB36F43A-802C-4574-D532-A0827414E1F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB36F43A-802C-4574-D532-A0827414E1F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB36F43A-802C-4574-D532-A0827414E1F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB36F43A-802C-4574-D532-A0827414E1F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BEBF9B0-C74E-0E93-C463-FF7FEC92F8B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BEBF9B0-C74E-0E93-C463-FF7FEC92F8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BEBF9B0-C74E-0E93-C463-FF7FEC92F8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BEBF9B0-C74E-0E93-C463-FF7FEC92F8B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
