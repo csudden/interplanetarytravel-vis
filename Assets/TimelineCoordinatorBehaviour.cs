@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimelineCoordinatorBehaviour : MonoBehaviour {
 
@@ -11,13 +12,27 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 	public GameObject timeStepPrefab;
 	public GameObject currentPositionMarker;
 	public GameObject planetPositionMarker;
-	public int timeStep = 100;
+	private int timeStep = 100;
+	public float timeMultiplier = 1f;
 
 	public MovementBehaviour movementBehaviour;
 	public CoordinateSystemCreator coordinateSystemCreator;
+
+
+	public Text yearsPassed;
+	public Text monthsPassed;
+	public Text daysPassed;
+	public Text hoursPassed;
+	public Text minutesPassed;
+	public Text secondsPassed;
+
 	// Use this for initialization
 	void Start () {
 		
+	}
+
+	public void SetPlaybackSpeed(float multiplier){
+		timeMultiplier = multiplier;
 	}
 
 	int timeStepChoice = 0;
@@ -57,19 +72,19 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 
 		if (type == 0) {
 			timeStep = (int)(containerSize / minutes);
-			//Debug.Log("Minutes needed:" + minutes);
+			Debug.Log("Minutes needed:" + minutes);
 		} else if (type == 1) {
 			timeStep = (int)(containerSize / hours);
-			//Debug.Log("Hours needed:" + hours);
+			Debug.Log("Hours needed:" + hours);
 		} else if (type == 2) {
 			timeStep = (int)(containerSize / days);
-			//Debug.Log("Days needed:" + days);
+			Debug.Log("Days needed:" + days);
 		} else if (type == 3) {
 			timeStep = (int)(containerSize / months);
-			//Debug.Log("Months needed:" + months);
+			Debug.Log("Months needed:" + months);
 		} else if (type == 4) {
 			timeStep = (int)(containerSize / years);
-			//Debug.Log("Years needed:" + years);
+			Debug.Log("Years needed:" + years);
 		}
 
 
@@ -80,6 +95,39 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 				timeStep.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (i, 0);
 			}
 		}
+	}
+
+	// TODO: Draw markers again on resize
+	void OnResize(){
+		Debug.Log ("resized");
+	}
+
+	double GetTimePassed(){
+
+		double seconds = (movementBehaviour.distanceToStart / (movementBehaviour.kilometersPerSecond/1000000));
+		double minutes = ((movementBehaviour.distanceToStart / (movementBehaviour.kilometersPerSecond/1000000f * 60f)));
+		double hours = ((movementBehaviour.distanceToStart / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f)));
+		double days = ((movementBehaviour.distanceToStart / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f)));
+		double months = ((movementBehaviour.distanceToStart / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 30)));
+		double years = ((movementBehaviour.distanceToStart / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 365)));
+
+		seconds = (int)seconds%60;
+		minutes = (int)minutes%60;
+		hours = (int)hours%24;
+		days = (int)(days%30.436875);
+		months = (int)months%12;
+		years = (int)years;
+
+		secondsPassed.text = seconds.ToString();
+		minutesPassed.text = minutes.ToString();
+		hoursPassed.text = hours.ToString();
+		daysPassed.text = days.ToString();
+		monthsPassed.text = months.ToString();
+		yearsPassed.text = years.ToString();
+
+
+		Debug.Log (" years: " + years + " months: " + months + " days: " + days + " hours: " + hours + " minutes: " + minutes + " seconds: " + seconds);
+		return seconds;
 	}
 
 	void CreatePlanetMarkersInTimeline(){
@@ -119,8 +167,12 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		movementBehaviour.SetTimeMultiplier(timeMultiplier);
+
 		float containerSize = timelineContainer.rect.width;
 
+		Debug.Log (GetTimePassed ()+ " Timepassed seconds");
 		if (movementBehaviour.distanceToStart != 0) {
 			currentPositionMarker.GetComponent<RectTransform>().anchoredPosition = new Vector2 (timelineContainer.rect.width * ((float)movementBehaviour.distanceToStart/(float)movementBehaviour.distanceComplete), 0);
 			CreatePlanetMarkersInTimeline();

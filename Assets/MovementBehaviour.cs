@@ -16,6 +16,7 @@ public class MovementBehaviour : MonoBehaviour {
 	public double distanceComplete;
 
 	public float kilometersPerSecond = 2.91f;
+	private float timeMultiplier = 1f;
 	// Use this for initialization
 	void Start () {
 		StartJourney ();
@@ -39,6 +40,10 @@ public class MovementBehaviour : MonoBehaviour {
 		gameObject.transform.position = new Vector3(startPlanet.position.x, startPlanet.position.y, gameObject.transform.position.z);
 	}
 
+	public void SetTimeMultiplier(float multiplier){
+		timeMultiplier = multiplier;
+	}
+
 	float time = 0f;
 	// Update is called once per frame
 	void Update () {
@@ -54,7 +59,7 @@ public class MovementBehaviour : MonoBehaviour {
 		}
 			
 		if (distanceToDestination > 0){
-			distanceToStart += (kilometersPerSecond/1000000f) * Time.deltaTime;
+			distanceToStart += (kilometersPerSecond/1000000f) * Time.deltaTime* timeMultiplier;
 		}
 
 		if (distanceComplete > distanceToStart) {
