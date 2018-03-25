@@ -15,6 +15,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 	private int timeStep = 100;
 	public float timeMultiplier = 1f;
 
+	public GameObject spaceshipParent;
 	public MovementBehaviour movementBehaviour;
 	public CoordinateSystemCreator coordinateSystemCreator;
 
@@ -26,9 +27,10 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 	public Text minutesPassed;
 	public Text secondsPassed;
 
+	MovementBehaviour[] movementBehaviourSpaceships;
 	// Use this for initialization
 	void Start () {
-		
+		movementBehaviourSpaceships = spaceshipParent.GetComponentsInChildren<MovementBehaviour>();
 	}
 
 	public void SetPlaybackSpeed(float multiplier){
@@ -104,12 +106,12 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 
 	double GetTimePassed(){
 
-		double seconds = (movementBehaviour.distanceToStart / (movementBehaviour.kilometersPerSecond/1000000));
-		double minutes = ((movementBehaviour.distanceToStart / (movementBehaviour.kilometersPerSecond/1000000f * 60f)));
-		double hours = ((movementBehaviour.distanceToStart / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f)));
-		double days = ((movementBehaviour.distanceToStart / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f)));
-		double months = ((movementBehaviour.distanceToStart / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 30)));
-		double years = ((movementBehaviour.distanceToStart / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 365)));
+		double seconds = (movementBehaviour.distanceToStart / ((float)movementBehaviour.kilometersPerSecond/1000000f));
+		double minutes = ((movementBehaviour.distanceToStart / ((float)movementBehaviour.kilometersPerSecond/1000000f * 60f)));
+		double hours = ((movementBehaviour.distanceToStart / ((float)movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f)));
+		double days = ((movementBehaviour.distanceToStart / ((float)movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f)));
+		double months = ((movementBehaviour.distanceToStart / ((float)movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 30f)));
+		double years = ((movementBehaviour.distanceToStart / ((float)movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 365f)));
 
 		seconds = (int)seconds%60;
 		minutes = (int)minutes%60;
@@ -128,6 +130,12 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 
 		Debug.Log (" years: " + years + " months: " + months + " days: " + days + " hours: " + hours + " minutes: " + minutes + " seconds: " + seconds);
 		return seconds;
+	}
+
+	public void StartJourneyAllShips(){
+		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
+			mb.StartJourney();
+		}
 	}
 
 	void CreatePlanetMarkersInTimeline(){
@@ -167,12 +175,16 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		GetTimePassed ();
 
-		movementBehaviour.SetTimeMultiplier(timeMultiplier);
+		// Apply Time Scaling to all available Spaceships
+		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
+			mb.SetTimeMultiplier (timeMultiplier);
+		}
 
 		float containerSize = timelineContainer.rect.width;
 
-		Debug.Log (GetTimePassed ()+ " Timepassed seconds");
+		//Debug.Log (GetTimePassed ()+ " Timepassed seconds");
 		if (movementBehaviour.distanceToStart != 0) {
 			currentPositionMarker.GetComponent<RectTransform>().anchoredPosition = new Vector2 (timelineContainer.rect.width * ((float)movementBehaviour.distanceToStart/(float)movementBehaviour.distanceComplete), 0);
 			CreatePlanetMarkersInTimeline();

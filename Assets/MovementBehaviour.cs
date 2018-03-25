@@ -15,7 +15,7 @@ public class MovementBehaviour : MonoBehaviour {
 	public double distanceToDestination;
 	public double distanceComplete;
 
-	public float kilometersPerSecond = 2.91f;
+	public double kilometersPerSecond = 2.91f;
 	private float timeMultiplier = 1f;
 	// Use this for initialization
 	void Start () {
@@ -27,7 +27,7 @@ public class MovementBehaviour : MonoBehaviour {
 		endPosition = new Vector3(destinationPlanet.position.x, destinationPlanet.position.y, 0);
 		distanceToStart = 0;
 		GetComponentInChildren<TrailCoordinatorBehaviour>().ResetTrail ();
-		gameObject.transform.position = new Vector3(startPlanet.position.x, startPlanet.position.y, gameObject.transform.position.z);
+		gameObject.transform.position = new Vector3(startPlanet.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
 	}
 
 	public void StartJourney (Transform _startPlanet, Transform _destinationPlanet) {
@@ -37,7 +37,7 @@ public class MovementBehaviour : MonoBehaviour {
 		endPosition = new Vector3(destinationPlanet.position.x, destinationPlanet.position.y, 0);
 		distanceToStart = 0;
 		GetComponentInChildren<TrailCoordinatorBehaviour>().ResetTrail ();
-		gameObject.transform.position = new Vector3(startPlanet.position.x, startPlanet.position.y, gameObject.transform.position.z);
+		gameObject.transform.position = new Vector3(startPlanet.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
 	}
 
 	public void SetTimeMultiplier(float multiplier){
@@ -59,15 +59,15 @@ public class MovementBehaviour : MonoBehaviour {
 		}
 			
 		if (distanceToDestination > 0){
-			distanceToStart += (kilometersPerSecond/1000000f) * Time.deltaTime* timeMultiplier;
+			distanceToStart += (kilometersPerSecond/1000000d) * Time.deltaTime* timeMultiplier;
 		}
 
 		if (distanceComplete > distanceToStart) {
 			if (destinationPlanet.position.x > startPlanet.position.x) {
-				transform.localPosition = (new Vector3 (startPlanet.position.x+(float)distanceToStart, 0, 0));
+				transform.localPosition = (new Vector3 (startPlanet.position.x+(float)distanceToStart, transform.localPosition.y, transform.localPosition.z));
 				transform.localEulerAngles = new Vector3 (0, 0, 0);
 			} else {
-				transform.localPosition = (new Vector3 (startPlanet.position.x-(float)distanceToStart, 0, 0));
+				transform.localPosition = (new Vector3 (startPlanet.position.x-(float)distanceToStart,transform.localPosition.y, transform.localPosition.z));
 				transform.localEulerAngles = new Vector3 (0, 180, 0);
 			}
 		} else {
