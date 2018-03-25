@@ -15,7 +15,7 @@ public class MovementBehaviour : MonoBehaviour {
 	public float distanceToDestination;
 	public float distanceComplete;
 
-	public float speed = 0.05f;
+	public float speedPerSecond = 0.05f;
 	// Use this for initialization
 	void Start () {
 		StartJourney ();
@@ -27,7 +27,8 @@ public class MovementBehaviour : MonoBehaviour {
 		GetComponentInChildren<TrailCoordinatorBehaviour>().ResetTrail ();
 		gameObject.transform.position = new Vector3(startPlanet.position.x, startPlanet.position.y, gameObject.transform.position.z);
 	}
-	
+
+	float time = 0f;
 	// Update is called once per frame
 	void Update () {
 		currentPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
@@ -35,12 +36,18 @@ public class MovementBehaviour : MonoBehaviour {
 		distanceToStart =  Mathf.Abs(currentPosition.x - startPosition.x)*1000000;
 		distanceToDestination = Mathf.Abs(endPosition.x - currentPosition.x)*1000000;
 		distanceComplete = Mathf.Abs(endPosition.x - startPosition.x)*1000000;
+
+		time += Time.deltaTime;
+		if (time > 1) {
+			//Debug.Log (transform.position.x);
+		}
+
 		if (distanceComplete > distanceToStart) {
 			if (destinationPlanet.position.x > startPlanet.position.x) {
-				transform.Translate (new Vector3 (speed, 0, 0));
+				transform.Translate (new Vector3 (speedPerSecond*Time.deltaTime, 0, 0));
 				transform.localEulerAngles = new Vector3 (0, 0, 0);
 			} else {
-				transform.Translate (new Vector3 (speed, 0, 0));
+				transform.Translate (new Vector3 (speedPerSecond*Time.deltaTime, 0, 0));
 				transform.localEulerAngles = new Vector3 (0, 180, 0);
 			}
 		} else {
