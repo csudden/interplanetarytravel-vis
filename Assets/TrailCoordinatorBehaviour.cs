@@ -6,9 +6,18 @@ public class TrailCoordinatorBehaviour : MonoBehaviour {
 
 	float startScale;
 	public float scaleIntensity = 1000;
+	TrailRenderer trailRenderer;
 	// Use this for initialization
 	void Start () {
-		startScale = (float)GetComponent<TrailRenderer>().widthMultiplier;
+		trailRenderer = GetComponent<TrailRenderer>();
+		startScale = (float)trailRenderer.widthMultiplier;
+		Debug.Log (trailRenderer.name);
+	}
+
+	public void ResetTrail(){
+		if (trailRenderer != null) {
+			trailRenderer.Clear ();
+		}
 	}
 	
 	// Update is called once per frame

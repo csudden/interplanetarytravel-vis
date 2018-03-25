@@ -31,14 +31,20 @@ public class CameraFollowBehaviour : MonoBehaviour {
 		if (Input.GetKey(KeyCode.F)) {
 			draggedCameraPosition = Vector3.zero;
 		}
-		if (Camera.main.orthographicSize > 0.2) {
-			newOrthographicSize = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 4);
+
+		float formulaWidefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y*2f);
+		float formulaMiddlefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 10f);
+		float formulaSmallfield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 250f);
+		if (formulaWidefield >= 10f && formulaMiddlefield >= 10f) {
+			newOrthographicSize = formulaWidefield;
+		} else if (formulaMiddlefield > 0.1f && formulaSmallfield > 0.1f) {
+			newOrthographicSize = formulaMiddlefield;
 		} else {
-			float formula = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 330f);
-			if (formula > 0.001f) {
-				newOrthographicSize = formula;
+			if (formulaSmallfield >= 0.001f) {
+				newOrthographicSize = formulaSmallfield;
 			}
 		}
+
 		if (newOrthographicSize > 0) {
 			Camera.main.orthographicSize = newOrthographicSize;
 		}
@@ -50,7 +56,7 @@ public class CameraFollowBehaviour : MonoBehaviour {
 				undraggedCameraPosition = draggedCameraPosition;
 			} else {
 				deltaMovement = Input.mousePosition - mousePressedPosition;
-				Debug.Log (deltaMovement);
+				//Debug.Log (deltaMovement);
 				draggedCameraPosition = undraggedCameraPosition + deltaMovement/10f*newOrthographicSize/10;
 			}
 		}

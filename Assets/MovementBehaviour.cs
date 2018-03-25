@@ -21,10 +21,10 @@ public class MovementBehaviour : MonoBehaviour {
 		StartJourney ();
 	}
 
-	void StartJourney () {
+	public void StartJourney () {
 		startPosition = new Vector3(startPlanet.position.x, startPlanet.position.y, 0);
 		endPosition = new Vector3(destinationPlanet.position.x, destinationPlanet.position.y, 0);
-
+		GetComponentInChildren<TrailCoordinatorBehaviour>().ResetTrail ();
 		gameObject.transform.position = new Vector3(startPlanet.position.x, startPlanet.position.y, gameObject.transform.position.z);
 	}
 	
