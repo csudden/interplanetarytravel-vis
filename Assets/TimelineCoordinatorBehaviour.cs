@@ -78,7 +78,19 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 			foreach (GameObject planet in coordinateSystemCreator.planets) {
 				float distance = Mathf.Abs (planet.transform.position.x - movementBehaviour.startPlanet.position.x);
 
-				if (distance < movementBehaviour.distanceComplete) {
+				if (distance < movementBehaviour.distanceComplete && (planet.transform.position.x > movementBehaviour.startPlanet.position.x)) {
+					Debug.Log (distance+ "dis");
+					Debug.Log (movementBehaviour.distanceComplete+"disComp");
+					GameObject planetMarker = Instantiate (planetPositionMarker, timelineContainer, false);
+					planetMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((float)(distance/movementBehaviour.distanceComplete) * containerSize, 0);
+				}
+			}
+		} else if (movementBehaviour.destinationPlanet.transform.position.x < movementBehaviour.startPlanet.position.x) {
+
+			foreach (GameObject planet in coordinateSystemCreator.planets) {
+				float distance = Mathf.Abs (planet.transform.position.x - movementBehaviour.startPlanet.position.x);
+
+				if (distance < movementBehaviour.distanceComplete && (planet.transform.position.x < movementBehaviour.startPlanet.position.x)) {
 					Debug.Log (distance+ "dis");
 					Debug.Log (movementBehaviour.distanceComplete+"disComp");
 					GameObject planetMarker = Instantiate (planetPositionMarker, timelineContainer, false);

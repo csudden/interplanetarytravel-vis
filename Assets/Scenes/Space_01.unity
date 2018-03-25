@@ -2148,7 +2148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPlanet: {fileID: 1377193317}
-  destinationPlanet: {fileID: 486425781}
+  destinationPlanet: {fileID: 1312250474}
   distanceToStart: 0
   distanceToDestination: 0
   distanceComplete: 0
