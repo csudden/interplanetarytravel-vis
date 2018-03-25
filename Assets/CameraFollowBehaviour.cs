@@ -25,7 +25,7 @@ public class CameraFollowBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (followObject) {
-			gameObject.transform.position = new Vector3 (draggedCameraPosition.x+objectToFollow.transform.position.x, objectToFollow.transform.position.y - newOrthographicSize/3 + offsetY, gameObject.transform.position.z);
+			gameObject.transform.position = new Vector3 (draggedCameraPosition.x+objectToFollow.transform.position.x, objectToFollow.transform.position.y - newOrthographicSize/5 + offsetY, gameObject.transform.position.z);
 		}
 
 		if (Input.GetKey(KeyCode.F)) {
