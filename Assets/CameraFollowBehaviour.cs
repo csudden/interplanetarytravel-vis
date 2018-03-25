@@ -11,6 +11,10 @@ public class CameraFollowBehaviour : MonoBehaviour {
 		
 	}
 
+	public void ResetFocus(){
+		draggedCameraPosition = Vector3.zero;
+	}
+
 	Vector3 mousePressedPosition;
 	Vector3 mouseReleasedPosition;
 	Vector3 deltaMovement;
@@ -29,18 +33,22 @@ public class CameraFollowBehaviour : MonoBehaviour {
 		}
 
 		if (Input.GetKey(KeyCode.F)) {
-			draggedCameraPosition = Vector3.zero;
+			ResetFocus();
 		}
 
+		float formulaUltraWidefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y*50f);
 		float formulaWidefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y*2f);
 		float formulaMiddlefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 10f);
 		float formulaSmallfield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 200f);
-		if (formulaWidefield >= 3f && formulaMiddlefield >= 3f) {
+
+		if (formulaUltraWidefield >= 15f && formulaUltraWidefield <= 3000f && formulaMiddlefield >= 15f) {
+			newOrthographicSize = formulaUltraWidefield;
+		} else if (formulaWidefield >= 3f && formulaWidefield <= 3000f && formulaMiddlefield >= 3f) {
 			newOrthographicSize = formulaWidefield;
-		} else if (formulaMiddlefield > 0.1f && formulaSmallfield > 0.1f) {
+		} else if (formulaMiddlefield > 0.1f && formulaMiddlefield <= 3000f && formulaSmallfield > 0.1f) {
 			newOrthographicSize = formulaMiddlefield;
 		} else {
-			if (formulaSmallfield >= 0.001f) {
+			if (formulaSmallfield >= 0.001f && formulaSmallfield <= 3000f) {
 				newOrthographicSize = formulaSmallfield;
 			}
 		}

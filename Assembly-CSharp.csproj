@@ -55,6 +55,7 @@
      <Compile Include="Assets\CoordinateSystemCreator.cs" />
      <Compile Include="Assets\CoordinateSystemScalingBehaviour.cs" />
      <Compile Include="Assets\MovementBehaviour.cs" />
+     <Compile Include="Assets\ObjectScalingBehaviour.cs" />
      <Compile Include="Assets\TimeMarkerBehaviour.cs" />
      <Compile Include="Assets\TrailCoordinatorBehaviour.cs" />
      <None Include="Assets\Shaders\Builtins\FinalPass.shader" />

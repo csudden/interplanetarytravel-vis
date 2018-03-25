@@ -112,11 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &6688458 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1610624998507278, guid: 80411f8217b02fa4ebec4a8787d06f90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1461870016}
 --- !u!4 &6688461 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4162952113774488, guid: 80411f8217b02fa4ebec4a8787d06f90,
@@ -2565,6 +2560,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1804201431}
+        m_MethodName: ResetFocus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &988438792
@@ -3536,10 +3542,10 @@ RectTransform:
   m_Father: {fileID: 934539192}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -102.9}
-  m_SizeDelta: {x: 1280, y: 122.74}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 710, y: 541.1}
+  m_SizeDelta: {x: 1280, y: 122.73999}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1282180998
 MonoBehaviour:
@@ -7510,6 +7516,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1610624998507278, guid: 80411f8217b02fa4ebec4a8787d06f90, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80411f8217b02fa4ebec4a8787d06f90, type: 2}
   m_IsPrefabParent: 0
@@ -7654,7 +7664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetIndicatorLine: {fileID: 1556997307513998, guid: e87395018fc55d345808fc6b11b6922f,
     type: 2}
-  planetName: {fileID: 6688458}
+  planetName: {fileID: 1610624998507278, guid: 80411f8217b02fa4ebec4a8787d06f90, type: 2}
   coordinateSystem: {fileID: 1166307462}
   planetNameContainer: {fileID: 1624703770}
 --- !u!1 &1544197121
