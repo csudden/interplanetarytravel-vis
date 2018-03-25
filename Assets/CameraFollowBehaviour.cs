@@ -19,17 +19,20 @@ public class CameraFollowBehaviour : MonoBehaviour {
 	Vector3 draggedCameraPosition;
 	bool dragMode = false;
 
+	public float offsetY = -3;
+
 	float newOrthographicSize;
 	// Update is called once per frame
 	void Update () {
 		if (followObject) {
-			gameObject.transform.position = new Vector3 (draggedCameraPosition.x+objectToFollow.transform.position.x, objectToFollow.transform.position.y, gameObject.transform.position.z);
-			//draggedCameraPosition =  new Vector3 (undraggedCameraPosition.x + deltaMovement.x / 10f, undraggedCameraPosition.y + deltaMovement.y / 10f, gameObject.transform.position.z);
+			gameObject.transform.position = new Vector3 (draggedCameraPosition.x+objectToFollow.transform.position.x, objectToFollow.transform.position.y - newOrthographicSize/3 + offsetY, gameObject.transform.position.z);
 		}
 
-		newOrthographicSize = (Camera.main.orthographicSize + Input.mouseScrollDelta.y);
+		if (Input.GetKey(KeyCode.F)) {
+			draggedCameraPosition = Vector3.zero;
+		}
 
-
+		newOrthographicSize = (Camera.main.orthographicSize + Input.mouseScrollDelta.y/4);
 		if (newOrthographicSize > 0) {
 			Debug.Log ("newOrtho" + newOrthographicSize);
 			Camera.main.orthographicSize = newOrthographicSize;
