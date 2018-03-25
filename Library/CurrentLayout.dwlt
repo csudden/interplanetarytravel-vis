@@ -41,10 +41,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 679, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MinSize: {x: 681, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
   vertical: 1
-  controlID: 116
+  controlID: 132
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -65,10 +65,10 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 947
-  m_MinSize: {x: 679, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MinSize: {x: 681, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 117
+  controlID: 133
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -87,8 +87,8 @@ MonoBehaviour:
     y: 0
     width: 315
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -383,19 +383,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Skybox/Box2
+    - Assets/SpaceShips/orion spaceship/Model
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Skybox/Box2
+  - Assets/SpaceShips/orion spaceship/Model
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Projects\IntVis-Unity\Interplanetary Travelling\interplanetarytravel-vis
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 87}
-    m_SelectedIDs: d02b0000
-    m_LastClickedID: 11216
-    m_ExpandedIDs: 00000000542a0000822a0000b22b0000a82c00001431000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 83}
+    m_SelectedIDs: 462a0000
+    m_LastClickedID: 10822
+    m_ExpandedIDs: 00000000122a0000422a0000e62a0000d630000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -423,7 +423,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000542a0000822a0000b22b000014310000
+    m_ExpandedIDs: 00000000122a0000422a0000742b0000682c0000d6300000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -475,7 +475,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 295}
     m_GridSize: 16
   m_DirectoriesAreaWidth: 327
 --- !u!114 &16
@@ -541,9 +541,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 20fbffff
-    m_LastClickedID: -1248
-    m_ExpandedIDs: 20fbffff00000000
+    m_SelectedIDs: 9a2f0000
+    m_LastClickedID: 12186
+    m_ExpandedIDs: 94fbffff000000005e2d0000922d0000e62d0000ee2d0000042e00004c2e0000cc2e0000162f0000562f0000622f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -594,14 +594,14 @@ MonoBehaviour:
     height: 651
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 36.40087907374998
+  lastFramingTime: 519.7239034392239
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 688.87317, y: 398.0456, z: 872.225}
+    m_Target: {x: 0.080423325, y: -0.02283475, z: -0.35775164}
     speed: 2
-    m_Value: {x: 688.87317, y: 398.0456, z: 872.225}
+    m_Value: {x: 0.080423325, y: -0.02283475, z: -0.35775164}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -625,13 +625,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.034719687, y: 0.069219686, z: -0.0024047673, w: 0.99703366}
+    m_Target: {x: 0.039201632, y: 0.069205, z: -0.0027803343, w: 0.9968709}
     speed: 2
-    m_Value: {x: 0.03471832, y: 0.06921697, z: -0.0024046728, w: 0.99699444}
+    m_Value: {x: 0.03919996, y: 0.06920205, z: -0.0027802156, w: 0.9968283}
   m_Size:
-    m_Target: 2072.7495
+    m_Target: 0.8317324
     speed: 2
-    m_Value: 2072.7495
+    m_Value: 0.8317324
   m_Ortho:
     m_Target: 0
     speed: 2

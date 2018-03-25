@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 11594614}
   m_LocalRotation: {x: -0, y: -0.9987397, z: -0, w: -0.050190654}
   m_LocalPosition: {x: 0, y: 0, z: -0.6566479}
-  m_LocalScale: {x: 0.10000024, y: 0.1, z: 0.10000024}
+  m_LocalScale: {x: 0.01000002, y: 0.01, z: 0.01000002}
   m_Children:
   - {fileID: 2011885956}
   - {fileID: 1328854771}
@@ -272,7 +272,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100026, guid: f936e512875123b498f840b1669bb156, type: 3}
+  - {fileID: 2100000, guid: 89c2b7f447cbaf046856f8101c08e7ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -345,7 +345,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: f936e512875123b498f840b1669bb156, type: 3}
+  - {fileID: 2100000, guid: 57d6d305b3a966f45b7476b61ea3ada1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1011,7 +1011,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100028, guid: f936e512875123b498f840b1669bb156, type: 3}
+  - {fileID: 2100000, guid: c07bd7099538f294f9ab1b62cbb05eee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1121,7 +1121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 480325187}
   m_Layer: 0
-  m_Name: Planets (1)
+  m_Name: PlanetsOverview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2086,7 +2086,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100006, guid: f936e512875123b498f840b1669bb156, type: 3}
+  - {fileID: 2100000, guid: 90ddff2d469d99543b61bf6e2d96f375, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3239,7 +3239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7058823, g: 0.48194718, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.68275857, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3465,7 +3465,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100030, guid: f936e512875123b498f840b1669bb156, type: 3}
+  - {fileID: 2100000, guid: 14c164979954a2d47aa5a5c481bf78c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7777,7 +7777,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100018, guid: f936e512875123b498f840b1669bb156, type: 3}
+  - {fileID: 2100000, guid: 8482f36d9ef198843b9e78d0b153b179, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7992,7 +7992,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100016, guid: f936e512875123b498f840b1669bb156, type: 3}
+  - {fileID: 2100000, guid: 0f71948ab9dc6bf418b1bb5c9db89a19, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8247,7 +8247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7058823, g: 0.48194718, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.68275857, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8740,7 +8740,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.04
+      scalar: 0.02
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -12677,7 +12677,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1873197234}
   m_LocalRotation: {x: -0, y: 0.9987397, z: -0, w: -0.050190654}
-  m_LocalPosition: {x: -0.19, y: 0, z: 0}
+  m_LocalPosition: {x: -0.19, y: 0.0238, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 11594615}

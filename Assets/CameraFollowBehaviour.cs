@@ -31,8 +31,14 @@ public class CameraFollowBehaviour : MonoBehaviour {
 		if (Input.GetKey(KeyCode.F)) {
 			draggedCameraPosition = Vector3.zero;
 		}
-
-		newOrthographicSize = (Camera.main.orthographicSize + Input.mouseScrollDelta.y/4);
+		if (Camera.main.orthographicSize > 0.2) {
+			newOrthographicSize = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 4);
+		} else {
+			float formula = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 330f);
+			if (formula > 0.001f) {
+				newOrthographicSize = formula;
+			}
+		}
 		if (newOrthographicSize > 0) {
 			Camera.main.orthographicSize = newOrthographicSize;
 		}

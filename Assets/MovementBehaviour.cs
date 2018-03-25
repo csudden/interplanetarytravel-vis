@@ -36,13 +36,15 @@ public class MovementBehaviour : MonoBehaviour {
 		distanceToDestination = Mathf.Abs(endPosition.x - currentPosition.x)*1000000;
 		distanceComplete = Mathf.Abs(endPosition.x - startPosition.x)*1000000;
 		if (distanceComplete > distanceToStart) {
-			if (destinationPlanet.position.x>startPlanet.position.x) {
+			if (destinationPlanet.position.x > startPlanet.position.x) {
 				transform.Translate (new Vector3 (speed, 0, 0));
 				transform.localEulerAngles = new Vector3 (0, 0, 0);
 			} else {
 				transform.Translate (new Vector3 (speed, 0, 0));
 				transform.localEulerAngles = new Vector3 (0, 180, 0);
 			}
+		} else {
+			gameObject.transform.position = new Vector3(destinationPlanet.position.x, destinationPlanet.position.y, gameObject.transform.position.z);
 		}
 	}
 }
