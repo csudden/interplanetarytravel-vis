@@ -8624,7 +8624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToFollow: {fileID: 11594614}
   followObject: 1
-  offsetY: -2
+  offsetY: 0
 --- !u!114 &1804201432
 MonoBehaviour:
   m_ObjectHideFlags: 0
