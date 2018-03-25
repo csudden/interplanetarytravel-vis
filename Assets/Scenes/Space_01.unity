@@ -2147,12 +2147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42df04fe927d50f4ca896768b6eddd2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPlanet: {fileID: 1893708984}
-  destinationPlanet: {fileID: 1377193317}
+  startPlanet: {fileID: 1377193317}
+  destinationPlanet: {fileID: 486425781}
   distanceToStart: 0
   distanceToDestination: 0
   distanceComplete: 0
-  kilometersPerSecond: 750
+  kilometersPerSecond: 7.5
 --- !u!1 &642271823
 GameObject:
   m_ObjectHideFlags: 0
@@ -8715,6 +8715,7 @@ MonoBehaviour:
   planetName: {fileID: 1610624998507278, guid: 80411f8217b02fa4ebec4a8787d06f90, type: 2}
   coordinateSystem: {fileID: 1166307462}
   planetNameContainer: {fileID: 1624703770}
+  planets: []
 --- !u!1 &1544197121
 GameObject:
   m_ObjectHideFlags: 0
@@ -9482,8 +9483,11 @@ MonoBehaviour:
   timeStepPrefab: {fileID: 1978586058570032, guid: 798825706c2908a42bdaa0fb5f032ac0,
     type: 2}
   currentPositionMarker: {fileID: 1510329870}
+  planetPositionMarker: {fileID: 1769274642711846, guid: 916797b72d982324aa368f9a911cd9bd,
+    type: 2}
   timeStep: 10
   movementBehaviour: {fileID: 599902815}
+  coordinateSystemCreator: {fileID: 1514151798}
 --- !u!1 &1715485279
 GameObject:
   m_ObjectHideFlags: 0

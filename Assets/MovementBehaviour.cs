@@ -29,6 +29,16 @@ public class MovementBehaviour : MonoBehaviour {
 		gameObject.transform.position = new Vector3(startPlanet.position.x, startPlanet.position.y, gameObject.transform.position.z);
 	}
 
+	public void StartJourney (Transform _startPlanet, Transform _destinationPlanet) {
+		startPlanet = _startPlanet;
+		destinationPlanet = _destinationPlanet;
+		startPosition = new Vector3(startPlanet.position.x, startPlanet.position.y, 0);
+		endPosition = new Vector3(destinationPlanet.position.x, destinationPlanet.position.y, 0);
+		distanceToStart = 0;
+		GetComponentInChildren<TrailCoordinatorBehaviour>().ResetTrail ();
+		gameObject.transform.position = new Vector3(startPlanet.position.x, startPlanet.position.y, gameObject.transform.position.z);
+	}
+
 	float time = 0f;
 	// Update is called once per frame
 	void Update () {

@@ -7,9 +7,11 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 	public RectTransform timelineContainer;
 	public GameObject timeStepPrefab;
 	public GameObject currentPositionMarker;
+	public GameObject planetPositionMarker;
 	public int timeStep = 100;
 
 	public MovementBehaviour movementBehaviour;
+	public CoordinateSystemCreator coordinateSystemCreator;
 	// Use this for initialization
 	void Start () {
 		
@@ -46,22 +48,45 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 
 		if (type == 0) {
 			timeStep = (int)(containerSize / minutes);
+			Debug.Log("Minutes needed:" + minutes);
 		} else if (type == 1) {
 			timeStep = (int)(containerSize / hours);
+			Debug.Log("Hours needed:" + hours);
 		} else if (type == 2) {
 			timeStep = (int)(containerSize / days);
+			Debug.Log("Days needed:" + days);
 		} else if (type == 3) {
 			timeStep = (int)(containerSize / months);
+			Debug.Log("Months needed:" + months);
 		} else if (type == 4) {
 			timeStep = (int)(containerSize / years);
+			Debug.Log("Years needed:" + years);
 		}
 
-		Debug.Log(hours);
 
-		for (int i = timeStep; i < containerSize; i += timeStep) {
-			GameObject timeStep = Instantiate (timeStepPrefab, timelineContainer, false);
-			timeStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(i,0);
+		// CREATE TIMESTEPS IN TIMELINE
+		if ((int)timeStep > 0) {
+			for (int i = timeStep; i < containerSize; i += timeStep) {
+				GameObject timeStep = Instantiate (timeStepPrefab, timelineContainer, false);
+				timeStep.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (i, 0);
+			}
 		}
+
+		// CREATE PLANET MARKERS IN TIMELINE
+		if (movementBehaviour.destinationPlanet.transform.position.x > movementBehaviour.startPlanet.position.x) {
+
+			foreach (GameObject planet in coordinateSystemCreator.planets) {
+				float distance = Mathf.Abs (planet.transform.position.x - movementBehaviour.startPlanet.position.x);
+
+				if (distance < movementBehaviour.distanceComplete) {
+					Debug.Log (distance+ "dis");
+					Debug.Log (movementBehaviour.distanceComplete+"disComp");
+					GameObject planetMarker = Instantiate (planetPositionMarker, timelineContainer, false);
+					planetMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((float)(distance/movementBehaviour.distanceComplete) * containerSize, 0);
+				}
+			}
+		}
+
 	}
 	
 	// Update is called once per frame
