@@ -34,7 +34,6 @@ public class CameraFollowBehaviour : MonoBehaviour {
 
 		newOrthographicSize = (Camera.main.orthographicSize + Input.mouseScrollDelta.y/4);
 		if (newOrthographicSize > 0) {
-			Debug.Log ("newOrtho" + newOrthographicSize);
 			Camera.main.orthographicSize = newOrthographicSize;
 		}
 
@@ -46,14 +45,11 @@ public class CameraFollowBehaviour : MonoBehaviour {
 			} else {
 				deltaMovement = Input.mousePosition - mousePressedPosition;
 				Debug.Log (deltaMovement);
-				draggedCameraPosition = undraggedCameraPosition + deltaMovement/10f;
+				draggedCameraPosition = undraggedCameraPosition + deltaMovement/10f*newOrthographicSize/10;
 			}
 		}
 
 		if (Input.GetMouseButtonUp(0)) {
-			//mouseReleasedPosition = Input.mousePosition;
-			//deltaMovement = mouseReleasedPosition - mousePressedPosition;
-
 			dragMode = false;
 		}
 	}
