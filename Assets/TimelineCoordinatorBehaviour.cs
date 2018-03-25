@@ -15,15 +15,47 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 		
 	}
 
-	public void CreateTimesteps(){
+	public void CreateTimestepsMinutes(){
+		CreateTimesteps (0);
+	}
+	public void CreateTimestepsHours(){
+		CreateTimesteps (1);
+	}
+	public void CreateTimestepsDays(){
+		CreateTimesteps (2);
+	}
+	public void CreateTimestepsMonths(){
+		CreateTimesteps (3);
+	}
+	public void CreateTimestepsYears(){
+		CreateTimesteps (4);
+	}
+		
+	public void CreateTimesteps(int type){
 		foreach (RectTransform t in timelineContainer){
 			Destroy (t.gameObject);
 		}
 
 		float containerSize = timelineContainer.rect.width;
 
+		double minutes = ((movementBehaviour.distanceComplete / (movementBehaviour.kilometersPerSecond/1000000f * 60f)));
 		double hours = ((movementBehaviour.distanceComplete / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f)));
 		double days = ((movementBehaviour.distanceComplete / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f)));
+		double months = ((movementBehaviour.distanceComplete / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 30)));
+		double years = ((movementBehaviour.distanceComplete / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 365)));
+
+		if (type == 0) {
+			timeStep = (int)(containerSize / minutes);
+		} else if (type == 1) {
+			timeStep = (int)(containerSize / hours);
+		} else if (type == 2) {
+			timeStep = (int)(containerSize / days);
+		} else if (type == 3) {
+			timeStep = (int)(containerSize / months);
+		} else if (type == 4) {
+			timeStep = (int)(containerSize / years);
+		}
+
 		Debug.Log(hours);
 
 		for (int i = timeStep; i < containerSize; i += timeStep) {

@@ -39,7 +39,7 @@ public class CameraFollowBehaviour : MonoBehaviour {
 		float formulaUltraWidefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y*50f);
 		float formulaWidefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y*2f);
 		float formulaMiddlefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 10f);
-		float formulaSmallfield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 200f);
+		float formulaSmallfield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 400f);
 
 		if (formulaUltraWidefield >= 15f && formulaUltraWidefield <= 3000f && formulaMiddlefield >= 15f) {
 			newOrthographicSize = formulaUltraWidefield;
