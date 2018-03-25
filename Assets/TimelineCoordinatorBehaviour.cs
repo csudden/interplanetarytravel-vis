@@ -22,6 +22,10 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 
 		float containerSize = timelineContainer.rect.width;
 
+		double hours = ((movementBehaviour.distanceComplete / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f)));
+		double days = ((movementBehaviour.distanceComplete / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f)));
+		Debug.Log(hours);
+
 		for (int i = timeStep; i < containerSize; i += timeStep) {
 			GameObject timeStep = Instantiate (timeStepPrefab, timelineContainer, false);
 			timeStep.GetComponent<RectTransform>().anchoredPosition = new Vector2(i,0);
@@ -33,7 +37,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 		float containerSize = timelineContainer.rect.width;
 
 		if (movementBehaviour.distanceToStart != 0) {
-			currentPositionMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (timelineContainer.rect.width * (movementBehaviour.distanceToStart/movementBehaviour.distanceComplete), 0);
+			currentPositionMarker.GetComponent<RectTransform>().anchoredPosition = new Vector2 (timelineContainer.rect.width * ((float)movementBehaviour.distanceToStart/(float)movementBehaviour.distanceComplete), 0);
 		}
 	}
 }
