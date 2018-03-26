@@ -36,7 +36,7 @@ public class CameraFollowBehaviour : MonoBehaviour {
 	float scaleDelta;
 	void Update () {
 		if (followObject) {
-			gameObject.transform.position = new Vector3 (draggedCameraPosition.x+objectToFollow.transform.position.x, objectToFollow.transform.position.y - newOrthographicSize/5 + offsetY, gameObject.transform.position.z);
+			gameObject.transform.position = new Vector3 (draggedCameraPosition.x+objectToFollow.transform.position.x, objectToFollow.transform.position.y - Camera.main.orthographicSize/5 + offsetY, gameObject.transform.position.z);
 		}
 
 		if (Input.GetKey(KeyCode.F)) {

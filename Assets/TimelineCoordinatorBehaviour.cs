@@ -223,7 +223,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 			}
 
 			SelectSpaceship (selectedMovementBehaviour.gameObject);
-
+			Camera.main.GetComponent<CameraFollowBehaviour> ().ResetFocus (false);
 			mb.StartJourney();
 		}
 
@@ -282,23 +282,19 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 	void SelectSpaceship(GameObject spaceship){
 		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
 			mb.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient(gradientSpaceshipUnselected);
+			mb.GetComponentInChildren<TrailCoordinatorBehaviour> ().SetToBack ();
 		}
 
 		selectedMovementBehaviour = spaceship.GetComponent<MovementBehaviour>();
 		selectedMovementBehaviour.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient(gradientSpaceshipSelected);
+		selectedMovementBehaviour.GetComponentInChildren<TrailCoordinatorBehaviour> ().SetToFront ();
 
 		foreach (Transform spaceshipMarker in spaceshipPositionContainer) {
 			if (spaceshipMarker.GetComponent<TagBehaviour> ().owner == spaceship) {
 				spaceshipMarker.GetComponent<Image> ().color = colorSelected;
-				//spaceship.transform.GetChild(0).position = new Vector3 (spaceship.transform.GetChild(0).transform.position.x, spaceship.transform.GetChild(0).transform.position.y, -10f);
 			} else {
-
 				GameObject owner = spaceshipMarker.GetComponent<TagBehaviour> ().owner;
-				if (owner != null) {
-					//owner.transform.GetChild(0).transform.position = new Vector3 (owner.transform.GetChild(0).transform.position.x, owner.transform.GetChild(0).transform.position.y, 0f);
-				}
 					spaceshipMarker.GetComponent<Image> ().color = colorUnselected;
-				
 			}
 		}
 

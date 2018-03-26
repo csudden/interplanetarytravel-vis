@@ -15,6 +15,8 @@ public class MovementBehaviour : MonoBehaviour {
 	public double distanceToDestination;
 	public double distanceComplete;
 
+	private LineRenderer lineRenderer;
+
 	private GameObject spaceshipPositionMarker;
 
 	public void SetSpaceshipPositionMarker(GameObject marker){
@@ -30,6 +32,7 @@ public class MovementBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		boxCollider = GetComponent<BoxCollider>();
+		lineRenderer = GetComponentInChildren<LineRenderer> ();
 	}
 
 	public void StartJourney () {
@@ -42,6 +45,23 @@ public class MovementBehaviour : MonoBehaviour {
 
 		GetComponentInChildren<TrailCoordinatorBehaviour>().ResetTrail ();
 		gameObject.transform.position = new Vector3(startPlanet.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+
+		InitializeLineRenderer ();
+		UpdateLineRenderer ();
+	}
+
+	public void InitializeLineRenderer(){
+		if (lineRenderer != null) {
+			lineRenderer.SetPosition (0, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, -0.65f));
+		}
+	}
+
+	public void UpdateLineRenderer(){
+		if (startPlanet != null) {
+			if (lineRenderer != null) {
+				lineRenderer.SetPosition (1, new Vector3(gameObject.transform.position.x,gameObject.transform.position.y,lineRenderer.GetPosition(1).z));
+			}
+		}
 	}
 
 	public void StartJourney (Transform _startPlanet, Transform _destinationPlanet) {
@@ -86,6 +106,7 @@ public class MovementBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (destinationPlanet != null && startPlanet != null) {
+
 			// Update Box Collider
 			boxCollider.size = new Vector3 ((float)distanceToStart, boxCollider.size.y, boxCollider.size.z);
 			boxCollider.center = new Vector3 (-(float)distanceToStart / 2, boxCollider.center.y, boxCollider.center.z);
@@ -93,16 +114,20 @@ public class MovementBehaviour : MonoBehaviour {
 			currentPosition = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, 0);
 
 			//distanceToStart =  Mathf.Abs(currentPosition.x - startPosition.x);
-			distanceToDestination = Mathf.Abs (endPosition.x - currentPosition.x);
+
+
+			if (destinationOnRight) {
+				distanceToDestination = ((double)endPosition.x - (double)(startPosition.x+distanceToStart));
+			} else {
+				distanceToDestination = -((double)endPosition.x - (double)(startPosition.x-distanceToStart));
+			}
+
+			//Debug.Log ("Dist Dest:" + distanceToDestination);
 			distanceComplete = Mathf.Abs (endPosition.x - startPosition.x);
 
 			time += Time.deltaTime;
 			if (time > 1) {
 				//Debug.Log (transform.position.x);
-			}
-			
-			if (distanceToDestination > 0) {
-				distanceToStart += (kilometersPerSecond / 1000000d) * Time.deltaTime * timeMultiplier;
 			}
 
 			if (distanceComplete > distanceToStart) {
@@ -118,6 +143,12 @@ public class MovementBehaviour : MonoBehaviour {
 			} else {
 				gameObject.transform.position = new Vector3 (destinationPlanet.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
 			}
+
+			if (distanceToDestination > 0d) {
+				distanceToStart += (kilometersPerSecond / 1000000d) * (double)Time.fixedDeltaTime * (double)timeMultiplier;
+			}
+
+			UpdateLineRenderer ();
 		}
 	}
 }
