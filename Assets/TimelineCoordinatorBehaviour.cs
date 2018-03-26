@@ -66,6 +66,19 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		timeMultiplier = multiplier;
 	}
 
+	public void SetNextPlaybackSpeed(Text btnText){
+		if (timeMultiplier <= 100000000) {
+			timeMultiplier *= 10;
+		}
+		btnText.text = timeMultiplier.ToString ("n0");
+	}
+
+	public void SetPreviousPlaybackSpeed(Text btnText){
+		if (timeMultiplier >= 10) {
+			timeMultiplier /= 10;
+		}
+		btnText.text = timeMultiplier.ToString ("n0");
+	}
 
 	public void CreateTimestepsMinutes(){
 		CreateTimesteps ((int)TimeStep.Minutes);
@@ -166,12 +179,12 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		double months = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 30f)));
 		double years = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 365f)));
 
-		seconds = (int)seconds%60;
-		minutes = (int)minutes%60;
-		hours = (int)hours%24;
-		days = (int)(days%30.436875);
-		months = (int)months%12;
-		years = (int)years;
+		seconds = Mathf.Abs((int)seconds%60);
+		minutes = Mathf.Abs((int)minutes%60);
+		hours = Mathf.Abs((int)hours%24);
+		days = Mathf.Abs((int)(days%30.436875));
+		months = Mathf.Abs((int)months%12);
+		years = Mathf.Abs((int)years);
 
 		secondsPassed.text = seconds.ToString();
 		minutesPassed.text = minutes.ToString();

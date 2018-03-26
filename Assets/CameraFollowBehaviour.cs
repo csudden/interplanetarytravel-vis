@@ -14,7 +14,7 @@ public class CameraFollowBehaviour : MonoBehaviour {
 	public void ResetFocus(bool resetScale){
 		draggedCameraPosition = Vector3.zero;
 		if (resetScale) {
-			Camera.main.orthographicSize = 0.03f;
+			Camera.main.orthographicSize = 0.1f;
 		}
 	}
 
