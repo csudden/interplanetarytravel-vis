@@ -290,10 +290,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.567
+    value: 0.257
   size:
     overrideState: 1
-    value: 0.7
+    value: 0.79
   lumContrib:
     overrideState: 0
     value: 0.8
@@ -413,7 +413,7 @@ MonoBehaviour:
     value: 1
   shutterAngle:
     overrideState: 1
-    value: 360
+    value: 6
   sampleCount:
     overrideState: 1
-    value: 18
+    value: 15
