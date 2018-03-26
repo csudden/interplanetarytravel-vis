@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4722934431127108}
   - component: {fileID: 33853283591007018}
-  - component: {fileID: 64788825953948392}
   - component: {fileID: 23507041043782394}
   - component: {fileID: 114523964101794116}
+  - component: {fileID: 65169048364860966}
   m_Layer: 0
   m_Name: PlanetIndicatorLine
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1556997307513998}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64788825953948392
-MeshCollider:
+--- !u!65 &65169048364860966
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -93,11 +93,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.000001, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114523964101794116
 MonoBehaviour:
   m_ObjectHideFlags: 1

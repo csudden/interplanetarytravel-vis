@@ -16,7 +16,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 	public float timeMultiplier = 1f;
 
 	public GameObject spaceshipParent;
-	public MovementBehaviour movementBehaviour;
+	public MovementBehaviour selectedMovementBehaviour;
 	public CoordinateSystemCreator coordinateSystemCreator;
 
 
@@ -27,36 +27,47 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 	public Text minutesPassed;
 	public Text secondsPassed;
 
+	public enum TimeStep {Minutes, Hours, Days, Months, Years};
+
+	public TimeStep timestepSetting = TimeStep.Months;
+
 	MovementBehaviour[] movementBehaviourSpaceships;
 	// Use this for initialization
 	void Start () {
 		movementBehaviourSpaceships = spaceshipParent.GetComponentsInChildren<MovementBehaviour>();
+		timestepSetting = TimeStep.Months;
+		StartCoroutine (LateStart (0.1f));
+	}
+
+	IEnumerator LateStart(float waitTime){
+		yield return new WaitForSeconds (waitTime);
+		CreateTimesteps((int)TimeStep.Months);
 	}
 
 	public void SetPlaybackSpeed(float multiplier){
 		timeMultiplier = multiplier;
 	}
 
-	int timeStepChoice = 0;
+
 	public void CreateTimestepsMinutes(){
-		CreateTimesteps (0);
-		timeStepChoice = 0;
+		CreateTimesteps ((int)TimeStep.Minutes);
+		timestepSetting = TimeStep.Minutes;
 	}
 	public void CreateTimestepsHours(){
-		CreateTimesteps (1);
-		timeStepChoice = 1;
+		CreateTimesteps ((int)TimeStep.Hours);
+		timestepSetting = TimeStep.Hours;
 	}
 	public void CreateTimestepsDays(){
-		CreateTimesteps (2);
-		timeStepChoice = 2;
+		CreateTimesteps ((int)TimeStep.Days);
+		timestepSetting = TimeStep.Days;
 	}
 	public void CreateTimestepsMonths(){
-		CreateTimesteps (3);
-		timeStepChoice = 3;
+		CreateTimesteps ((int)TimeStep.Months);
+		timestepSetting = TimeStep.Months;
 	}
 	public void CreateTimestepsYears(){
-		CreateTimesteps (4);
-		timeStepChoice = 4;
+		CreateTimesteps ((int)TimeStep.Years);
+		timestepSetting = TimeStep.Years;
 	}
 		
 	public void CreateTimesteps(int type){
@@ -66,25 +77,25 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 
 		float containerSize = timelineContainer.rect.width;
 
-		double minutes = ((movementBehaviour.distanceComplete / (movementBehaviour.kilometersPerSecond/1000000f * 60f)));
-		double hours = ((movementBehaviour.distanceComplete / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f)));
-		double days = ((movementBehaviour.distanceComplete / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f)));
-		double months = ((movementBehaviour.distanceComplete / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 30)));
-		double years = ((movementBehaviour.distanceComplete / (movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 365)));
+		double minutes = ((selectedMovementBehaviour.distanceComplete / (selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f)));
+		double hours = ((selectedMovementBehaviour.distanceComplete / (selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f)));
+		double days = ((selectedMovementBehaviour.distanceComplete / (selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f)));
+		double months = ((selectedMovementBehaviour.distanceComplete / (selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 30)));
+		double years = ((selectedMovementBehaviour.distanceComplete / (selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 365)));
 
-		if (type == 0) {
+		if (type == (int)TimeStep.Minutes) {
 			timeStep = (int)(containerSize / minutes);
 			Debug.Log("Minutes needed:" + minutes);
-		} else if (type == 1) {
+		} else if (type == (int)TimeStep.Hours) {
 			timeStep = (int)(containerSize / hours);
 			Debug.Log("Hours needed:" + hours);
-		} else if (type == 2) {
+		} else if (type == (int)TimeStep.Days) {
 			timeStep = (int)(containerSize / days);
 			Debug.Log("Days needed:" + days);
-		} else if (type == 3) {
+		} else if (type == (int)TimeStep.Months) {
 			timeStep = (int)(containerSize / months);
 			Debug.Log("Months needed:" + months);
-		} else if (type == 4) {
+		} else if (type == (int)TimeStep.Years) {
 			timeStep = (int)(containerSize / years);
 			Debug.Log("Years needed:" + years);
 		}
@@ -106,12 +117,12 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 
 	double GetTimePassed(){
 
-		double seconds = (movementBehaviour.distanceToStart / ((float)movementBehaviour.kilometersPerSecond/1000000f));
-		double minutes = ((movementBehaviour.distanceToStart / ((float)movementBehaviour.kilometersPerSecond/1000000f * 60f)));
-		double hours = ((movementBehaviour.distanceToStart / ((float)movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f)));
-		double days = ((movementBehaviour.distanceToStart / ((float)movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f)));
-		double months = ((movementBehaviour.distanceToStart / ((float)movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 30f)));
-		double years = ((movementBehaviour.distanceToStart / ((float)movementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 365f)));
+		double seconds = (selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f));
+		double minutes = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f)));
+		double hours = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f)));
+		double days = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f)));
+		double months = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 30f)));
+		double years = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 365f)));
 
 		seconds = (int)seconds%60;
 		minutes = (int)minutes%60;
@@ -128,7 +139,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 		yearsPassed.text = years.ToString();
 
 
-		Debug.Log (" years: " + years + " months: " + months + " days: " + days + " hours: " + hours + " minutes: " + minutes + " seconds: " + seconds);
+		//Debug.Log (" years: " + years + " months: " + months + " days: " + days + " hours: " + hours + " minutes: " + minutes + " seconds: " + seconds);
 		return seconds;
 	}
 
@@ -144,28 +155,28 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 			Destroy (t.gameObject);
 		}
 		float containerSize = timelineContainer.rect.width;
-		if (movementBehaviour.destinationPlanet.transform.position.x > movementBehaviour.startPlanet.position.x) {
+		if (selectedMovementBehaviour.destinationPlanet.transform.position.x > selectedMovementBehaviour.startPlanet.position.x) {
 
 			foreach (GameObject planet in coordinateSystemCreator.planets) {
-				float distance = Mathf.Abs (planet.transform.position.x - movementBehaviour.startPlanet.position.x);
+				float distance = Mathf.Abs (planet.transform.position.x - selectedMovementBehaviour.startPlanet.position.x);
 
-				if (distance < movementBehaviour.distanceComplete && (planet.transform.position.x > movementBehaviour.startPlanet.position.x)) {
+				if (distance < selectedMovementBehaviour.distanceComplete && (planet.transform.position.x > selectedMovementBehaviour.startPlanet.position.x)) {
 					//Debug.Log (distance+ "dis");
 					//Debug.Log (movementBehaviour.distanceComplete+"disComp");
 					GameObject planetMarker = Instantiate (planetPositionMarker, planetMarkerContainer, false);
-					planetMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((float)(distance/movementBehaviour.distanceComplete) * containerSize, 0);
+					planetMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((float)(distance/selectedMovementBehaviour.distanceComplete) * containerSize, 0);
 				}
 			}
-		} else if (movementBehaviour.destinationPlanet.transform.position.x < movementBehaviour.startPlanet.position.x) {
+		} else if (selectedMovementBehaviour.destinationPlanet.transform.position.x < selectedMovementBehaviour.startPlanet.position.x) {
 
 			foreach (GameObject planet in coordinateSystemCreator.planets) {
-				float distance = Mathf.Abs (planet.transform.position.x - movementBehaviour.startPlanet.position.x);
+				float distance = Mathf.Abs (planet.transform.position.x - selectedMovementBehaviour.startPlanet.position.x);
 
-				if (distance < movementBehaviour.distanceComplete && (planet.transform.position.x < movementBehaviour.startPlanet.position.x)) {
+				if (distance < selectedMovementBehaviour.distanceComplete && (planet.transform.position.x < selectedMovementBehaviour.startPlanet.position.x)) {
 					//Debug.Log (distance+ "dis");
 					//Debug.Log (movementBehaviour.distanceComplete+"disComp");
 					GameObject planetMarker = Instantiate (planetPositionMarker, planetMarkerContainer, false);
-					planetMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((float)(distance/movementBehaviour.distanceComplete) * containerSize, 0);
+					planetMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((float)(distance/selectedMovementBehaviour.distanceComplete) * containerSize, 0);
 				}
 			}
 		}
@@ -177,6 +188,23 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 	void Update () {
 		GetTimePassed ();
 
+		// Check which object has been clicked
+
+		if (Input.GetMouseButtonDown (0)) {
+			RaycastHit[] hit;
+			hit = Physics.RaycastAll (Camera.main.ScreenPointToRay (Input.mousePosition),20f);
+			if (hit.Length>0) {
+				Debug.Log ("Length: " + hit.Length);
+				foreach (RaycastHit h in hit) {
+					if (h.collider.gameObject.layer == 8) {
+						Debug.Log (h.collider.gameObject.name + " was hit with distance: " + h.distance);
+						selectedMovementBehaviour = h.collider.gameObject.GetComponent<MovementBehaviour>();
+						CreateTimesteps ((int)timestepSetting);
+					}
+				}
+			}
+		}
+
 		// Apply Time Scaling to all available Spaceships
 		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
 			mb.SetTimeMultiplier (timeMultiplier);
@@ -185,8 +213,9 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 		float containerSize = timelineContainer.rect.width;
 
 		//Debug.Log (GetTimePassed ()+ " Timepassed seconds");
-		if (movementBehaviour.distanceToStart != 0) {
-			currentPositionMarker.GetComponent<RectTransform>().anchoredPosition = new Vector2 (timelineContainer.rect.width * ((float)movementBehaviour.distanceToStart/(float)movementBehaviour.distanceComplete), 0);
+		if (selectedMovementBehaviour.distanceToStart != 0) {
+			Debug.Log (selectedMovementBehaviour.distanceToStart);
+			currentPositionMarker.GetComponent<RectTransform>().anchoredPosition = new Vector2 (timelineContainer.rect.width * ((float)selectedMovementBehaviour.distanceToStart/(float)selectedMovementBehaviour.distanceComplete), 0);
 			CreatePlanetMarkersInTimeline();
 		}
 	}

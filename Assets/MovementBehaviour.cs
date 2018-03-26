@@ -19,6 +19,7 @@ public class MovementBehaviour : MonoBehaviour {
 	private float timeMultiplier = 1f;
 	// Use this for initialization
 	void Start () {
+		boxCollider = GetComponent<BoxCollider>();
 		StartJourney ();
 	}
 
@@ -44,9 +45,14 @@ public class MovementBehaviour : MonoBehaviour {
 		timeMultiplier = multiplier;
 	}
 
+	private BoxCollider boxCollider;
 	float time = 0f;
 	// Update is called once per frame
 	void Update () {
+		// Update Box Collider
+		boxCollider.size = new Vector3((float)distanceToStart,boxCollider.size.y,boxCollider.size.z);
+		boxCollider.center =  new Vector3(-(float)distanceToStart/2,boxCollider.center.y,boxCollider.center.z);
+
 		currentPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
 
 		//distanceToStart =  Mathf.Abs(currentPosition.x - startPosition.x);
@@ -71,7 +77,7 @@ public class MovementBehaviour : MonoBehaviour {
 				transform.localEulerAngles = new Vector3 (0, 180, 0);
 			}
 		} else {
-			gameObject.transform.position = new Vector3(destinationPlanet.position.x, destinationPlanet.position.y, gameObject.transform.position.z);
+			gameObject.transform.position = new Vector3(destinationPlanet.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
 		}
 	}
 }
