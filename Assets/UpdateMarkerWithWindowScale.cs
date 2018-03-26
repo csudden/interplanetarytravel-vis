@@ -20,6 +20,8 @@ public class UpdateMarkerWithWindowScale : UIBehaviour {
 	protected override void OnRectTransformDimensionsChange(){
 		base.OnRectTransformDimensionsChange ();
 		Debug.Log ("I've been resized");
-		tcb.CreateTimesteps ();
+		if (tcb != null) {
+			tcb.CreateTimesteps ();
+		}
 	}
 }

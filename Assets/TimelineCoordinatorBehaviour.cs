@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
@@ -89,6 +90,27 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
 	public void CreateTimesteps(){
 		CreateTimesteps ((int)timestepSetting);
+	}
+
+	public void CreateTimestepsNextUnit(Text btnText){
+		int index = ((int)timestepSetting + 1);
+
+		if (index < Enum.GetNames(typeof(TimeStep)).Length){
+			timestepSetting = (TimeStep)index;
+			btnText.text = Enum.GetNames (typeof(TimeStep)) [index];
+			CreateTimesteps ((int)timestepSetting);
+		}
+	}
+
+	public void CreateTimestepsPreviousUnit(Text btnText){
+		
+		int index = (int)timestepSetting - 1;
+
+		if (index >= 0) {
+			timestepSetting = (TimeStep)index;
+			btnText.text = Enum.GetNames (typeof(TimeStep)) [index];
+			CreateTimesteps ((int)timestepSetting);
+		}
 	}
 		
 	public void CreateTimesteps(int type){
@@ -299,7 +321,11 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 					marker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((float)(mb.distanceToStart / mb.distanceComplete) * timelineContainer.rect.width, 0);
 				}
 
-				currentCameraPositionMarker.GetComponent<RectTransform>().anchoredPosition = new Vector2 (timelineContainer.rect.width * ((Camera.main.transform.position.x - startPlanet.transform.position.x)/(float)selectedMovementBehaviour.distanceComplete), 0);
+				if (mb.GetDestinationOnRight () == true) {
+					currentCameraPositionMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (timelineContainer.rect.width * ((Camera.main.transform.position.x - startPlanet.transform.position.x) / (float)selectedMovementBehaviour.distanceComplete), 0);
+				}else{
+					currentCameraPositionMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (timelineContainer.rect.width * (-(Camera.main.transform.position.x - startPlanet.transform.position.x) / (float)selectedMovementBehaviour.distanceComplete), 0);
+				}
 				CreatePlanetMarkersInTimeline();
 			}
 

@@ -77,6 +77,12 @@ public class MovementBehaviour : MonoBehaviour {
 
 	private BoxCollider boxCollider;
 	float time = 0f;
+	bool destinationOnRight = true;
+
+	public bool GetDestinationOnRight(){
+		return destinationOnRight;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (destinationPlanet != null && startPlanet != null) {
@@ -103,9 +109,11 @@ public class MovementBehaviour : MonoBehaviour {
 				if (destinationPlanet.position.x > startPlanet.position.x) {
 					transform.localPosition = (new Vector3 (startPlanet.position.x + (float)distanceToStart, transform.localPosition.y, transform.localPosition.z));
 					transform.localEulerAngles = new Vector3 (0, 0, 0);
+					destinationOnRight = true;
 				} else {
 					transform.localPosition = (new Vector3 (startPlanet.position.x - (float)distanceToStart, transform.localPosition.y, transform.localPosition.z));
 					transform.localEulerAngles = new Vector3 (0, 180, 0);
+					destinationOnRight = false;
 				}
 			} else {
 				gameObject.transform.position = new Vector3 (destinationPlanet.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
