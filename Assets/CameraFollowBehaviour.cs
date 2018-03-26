@@ -37,15 +37,15 @@ public class CameraFollowBehaviour : MonoBehaviour {
 		}
 
 		float formulaUltraWidefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y*50f);
-		float formulaWidefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y*2f);
+		float formulaWidefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y);
 		float formulaMiddlefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 10f);
-		float formulaSmallfield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 400f);
+		float formulaSmallfield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 300f);
 
-		if (formulaUltraWidefield >= 15f && formulaUltraWidefield <= 3000f && formulaMiddlefield >= 15f) {
+		if (formulaUltraWidefield >= 30f && formulaUltraWidefield <= 3000f && formulaMiddlefield >= 30f) {
 			newOrthographicSize = formulaUltraWidefield;
 		} else if (formulaWidefield >= 3f && formulaWidefield <= 3000f && formulaMiddlefield >= 3f) {
 			newOrthographicSize = formulaWidefield;
-		} else if (formulaMiddlefield > 0.1f && formulaMiddlefield <= 3000f && formulaSmallfield > 0.1f) {
+		} else if (formulaMiddlefield > 0.05f && formulaMiddlefield <= 3000f && formulaSmallfield > 0.05f) {
 			newOrthographicSize = formulaMiddlefield;
 		} else {
 			if (formulaSmallfield >= 0.001f && formulaSmallfield <= 3000f) {
@@ -72,5 +72,11 @@ public class CameraFollowBehaviour : MonoBehaviour {
 		if (Input.GetMouseButtonUp(0)) {
 			dragMode = false;
 		}
+	}
+
+	public void SetObjectToFollow(GameObject obj){
+		objectToFollow = obj;
+		undraggedCameraPosition = Vector3.zero;
+		draggedCameraPosition = Vector3.zero;
 	}
 }

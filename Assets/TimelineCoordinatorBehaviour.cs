@@ -42,13 +42,12 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 	void Start () {
 		movementBehaviourSpaceships = spaceshipParent.GetComponentsInChildren<MovementBehaviour>();
 		timestepSetting = TimeStep.Months;
-		StartCoroutine (LateStart (0.1f));
+		StartCoroutine (LateStart (0.01f));
 	}
 
 	IEnumerator LateStart(float waitTime){
 		yield return new WaitForSeconds (waitTime);
 		StartJourneyAllShips();
-		CreateTimesteps((int)TimeStep.Months);
 	}
 
 	public void SetPlaybackSpeed(float multiplier){
@@ -111,8 +110,8 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 		// CREATE TIMESTEPS IN TIMELINE
 		if ((int)timeStep > 0) {
 			for (int i = timeStep; i < containerSize; i += timeStep) {
-				GameObject timeStep = Instantiate (timeStepPrefab, timeStepContainer, false);
-				timeStep.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (i, 0);
+				GameObject timeStepMarker = Instantiate (timeStepPrefab, timeStepContainer, false);
+				timeStepMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (i, 0);
 			}
 		}
 	}
@@ -152,12 +151,17 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 		
 	public void StartJourneyAllShips(){
 		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
-			mb.SetStartPlanet(startPlanet);
-			mb.SetDestinationPlanet(destinationPlanet);
-			mb.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient(gradientSpaceshipUnselected);
+			mb.SetStartAndDestination(startPlanet, destinationPlanet);
+			if (mb != selectedMovementBehaviour) {
+				mb.GetComponentInChildren<TrailCoordinatorBehaviour> ().SetColorGradient(gradientSpaceshipUnselected);
+			} else {
+				mb.GetComponentInChildren<TrailCoordinatorBehaviour> ().SetColorGradient(gradientSpaceshipSelected);
+			}
 			mb.StartJourney();
 		}
+
 		selectedMovementBehaviour.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient (gradientSpaceshipSelected);
+		CreateTimesteps((int)TimeStep.Months);
 	}
 
 	void CreatePlanetMarkersInTimeline(){
@@ -213,8 +217,9 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 						}
 						Debug.Log (h.collider.gameObject.name + " was hit with distance: " + h.distance);
 						selectedMovementBehaviour = h.collider.gameObject.GetComponent<MovementBehaviour>();
-						selectedMovementBehaviour.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient (gradientSpaceshipSelected);
+						selectedMovementBehaviour.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient(gradientSpaceshipSelected);
 						CreateTimesteps((int)timestepSetting);
+						Camera.main.GetComponent<CameraFollowBehaviour> ().SetObjectToFollow(selectedMovementBehaviour.gameObject);
 					}
 				}
 			}

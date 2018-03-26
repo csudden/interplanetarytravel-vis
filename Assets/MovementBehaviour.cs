@@ -25,7 +25,11 @@ public class MovementBehaviour : MonoBehaviour {
 	public void StartJourney () {
 		startPosition = new Vector3(startPlanet.position.x, startPlanet.position.y, 0);
 		endPosition = new Vector3(destinationPlanet.position.x, destinationPlanet.position.y, 0);
+
 		distanceToStart = 0;
+		distanceToDestination = Mathf.Abs (endPosition.x - currentPosition.x);
+		distanceComplete = Mathf.Abs (endPosition.x - startPosition.x);
+
 		GetComponentInChildren<TrailCoordinatorBehaviour>().ResetTrail ();
 		gameObject.transform.position = new Vector3(startPlanet.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
 	}
@@ -35,7 +39,11 @@ public class MovementBehaviour : MonoBehaviour {
 		destinationPlanet = _destinationPlanet;
 		startPosition = new Vector3(startPlanet.position.x, startPlanet.position.y, 0);
 		endPosition = new Vector3(destinationPlanet.position.x, destinationPlanet.position.y, 0);
+
 		distanceToStart = 0;
+		distanceToDestination = Mathf.Abs (endPosition.x - currentPosition.x);
+		distanceComplete = Mathf.Abs (endPosition.x - startPosition.x);
+
 		GetComponentInChildren<TrailCoordinatorBehaviour>().ResetTrail ();
 		gameObject.transform.position = new Vector3(startPlanet.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
 	}
@@ -50,6 +58,11 @@ public class MovementBehaviour : MonoBehaviour {
 
 	public void SetDestinationPlanet(Transform _destinationPlanet){
 		destinationPlanet = _destinationPlanet;
+	}
+
+	public void SetStartAndDestination(Transform _startPlanet, Transform _destinationPlanet){
+		SetStartPlanet (_startPlanet);
+		SetDestinationPlanet (_destinationPlanet);
 	}
 
 	private BoxCollider boxCollider;
