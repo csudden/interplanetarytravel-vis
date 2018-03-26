@@ -60,6 +60,7 @@
      <Compile Include="Assets\TimelineCoordinatorBehaviour.cs" />
      <Compile Include="Assets\TimeMarkerBehaviour.cs" />
      <Compile Include="Assets\TrailCoordinatorBehaviour.cs" />
+     <Compile Include="Assets\UpdateMarkerWithWindowScale.cs" />
      <None Include="Assets\Shaders\Builtins\FinalPass.shader" />
      <None Include="Assets\Shaders\Debug\Waveform.compute" />
      <None Include="Assets\Shaders\Builtins\Uber.shader" />

@@ -6746,7 +6746,7 @@ Prefab:
     - target: {fileID: 224794070844609468, guid: ebc253613c9d1ae4c849b2f3a08e4c8f,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224794070844609468, guid: ebc253613c9d1ae4c849b2f3a08e4c8f,
         type: 2}
@@ -8733,7 +8733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.8897059, g: 0.8897059, b: 0.8897059, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10048,7 +10048,7 @@ Prefab:
     - target: {fileID: 224010164308014386, guid: 798825706c2908a42bdaa0fb5f032ac0,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224010164308014386, guid: 798825706c2908a42bdaa0fb5f032ac0,
         type: 2}
@@ -16052,6 +16052,7 @@ GameObject:
   - component: {fileID: 1698762511}
   - component: {fileID: 1698762510}
   - component: {fileID: 1698762512}
+  - component: {fileID: 1698762513}
   m_Layer: 5
   m_Name: Timeline
   m_TagString: Untagged
@@ -16132,6 +16133,8 @@ MonoBehaviour:
   spaceshipPositionContainer: {fileID: 1869635026}
   timeStepPrefab: {fileID: 1978586058570032, guid: 798825706c2908a42bdaa0fb5f032ac0,
     type: 2}
+  timeStepTooDenseMarker: {fileID: 1371860331903716, guid: 9aa63f21722f62b4c9334914d1b5ef2e,
+    type: 2}
   currentSpaceshipPositionMarker: {fileID: 1217614440902892, guid: b9e1a89c98daf594a91501d6af7ddb3a,
     type: 2}
   currentCameraPositionMarker: {fileID: 1020822335}
@@ -16211,6 +16214,17 @@ MonoBehaviour:
   colorSelected: {r: 0.79310346, g: 1, b: 0, a: 1}
   colorUnselected: {r: 0.75735295, g: 0.25059474, b: 0.25059474, a: 1}
   timestepSetting: 1
+--- !u!114 &1698762513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1698762508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77458bdbec3231f478095c20a1ddf046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1715485279
 GameObject:
   m_ObjectHideFlags: 0

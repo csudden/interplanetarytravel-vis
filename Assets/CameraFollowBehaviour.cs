@@ -36,6 +36,11 @@ public class CameraFollowBehaviour : MonoBehaviour {
 			ResetFocus();
 		}
 
+		if (Input.GetKey(KeyCode.R)) {
+			ResetFocus();
+			Camera.main.orthographicSize = 0.1f;
+		}
+
 		float formulaUltraWidefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y*50f);
 		float formulaWidefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y);
 		float formulaMiddlefield = (Camera.main.orthographicSize + Input.mouseScrollDelta.y / 10f);

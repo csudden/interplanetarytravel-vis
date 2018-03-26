@@ -16,6 +16,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 	public RectTransform spaceshipPositionContainer;
 
 	public GameObject timeStepPrefab;
+	public GameObject timeStepTooDenseMarker;
 	public GameObject currentSpaceshipPositionMarker;
 	public GameObject currentCameraPositionMarker;
 	public GameObject planetPositionMarker;
@@ -85,6 +86,10 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		CreateTimesteps ((int)TimeStep.Years);
 		timestepSetting = TimeStep.Years;
 	}
+
+	public void CreateTimesteps(){
+		CreateTimesteps ((int)timestepSetting);
+	}
 		
 	public void CreateTimesteps(int type){
 		unitsDisplay.text = ((TimeStep)type).ToString();
@@ -124,12 +129,10 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 				GameObject timeStepMarker = Instantiate (timeStepPrefab, timeStepContainer, false);
 				timeStepMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (i, 0);
 			}
+		} else {
+			Debug.Log ("Timestep too dense");
+			GameObject timeStepMarker = Instantiate (timeStepTooDenseMarker, timeStepContainer, false);
 		}
-	}
-
-	// TODO: Draw markers again on resize
-	void OnResize(){
-		Debug.Log ("resized");
 	}
 
 	double GetTimePassed(){
@@ -189,7 +192,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 			mb.StartJourney();
 		}
 
-		CreateTimesteps((int)TimeStep.Months);
+		CreateTimesteps((int)timestepSetting);
 	}
 
 	void CreatePlanetMarkersInTimeline(){
@@ -302,7 +305,6 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
 		}
 			
-
-
 	}
+
 }
