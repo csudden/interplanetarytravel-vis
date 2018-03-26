@@ -14,7 +14,7 @@ public class CameraFollowBehaviour : MonoBehaviour {
 	public void ResetFocus(bool resetScale){
 		draggedCameraPosition = Vector3.zero;
 		if (resetScale) {
-			Camera.main.orthographicSize = 0.05f;
+			Camera.main.orthographicSize = 0.03f;
 		}
 	}
 
@@ -95,8 +95,10 @@ public class CameraFollowBehaviour : MonoBehaviour {
 	}
 
 	public void SetObjectToFollow(GameObject obj){
-		objectToFollow = obj;
-		undraggedCameraPosition = Vector3.zero;
-		draggedCameraPosition = Vector3.zero;
+		if (objectToFollow != obj) {
+			objectToFollow = obj;
+			undraggedCameraPosition = Vector3.zero;
+			draggedCameraPosition = Vector3.zero;
+		}
 	}
 }
