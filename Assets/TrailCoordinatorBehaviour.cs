@@ -14,6 +14,10 @@ public class TrailCoordinatorBehaviour : MonoBehaviour {
 		Debug.Log (trailRenderer.name);
 	}
 
+	public void SetColorGradient(Gradient gradient){
+		trailRenderer.colorGradient = gradient;
+	}
+
 	public void ResetTrail(){
 		if (trailRenderer != null) {
 			trailRenderer.Clear ();

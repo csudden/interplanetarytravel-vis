@@ -20,7 +20,6 @@ public class MovementBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		boxCollider = GetComponent<BoxCollider>();
-		StartJourney ();
 	}
 
 	public void StartJourney () {
@@ -45,39 +44,49 @@ public class MovementBehaviour : MonoBehaviour {
 		timeMultiplier = multiplier;
 	}
 
+	public void SetStartPlanet(Transform _startPlanet){
+		startPlanet = _startPlanet;
+	}
+
+	public void SetDestinationPlanet(Transform _destinationPlanet){
+		destinationPlanet = _destinationPlanet;
+	}
+
 	private BoxCollider boxCollider;
 	float time = 0f;
 	// Update is called once per frame
 	void Update () {
-		// Update Box Collider
-		boxCollider.size = new Vector3((float)distanceToStart,boxCollider.size.y,boxCollider.size.z);
-		boxCollider.center =  new Vector3(-(float)distanceToStart/2,boxCollider.center.y,boxCollider.center.z);
+		if (destinationPlanet != null && startPlanet != null) {
+			// Update Box Collider
+			boxCollider.size = new Vector3 ((float)distanceToStart, boxCollider.size.y, boxCollider.size.z);
+			boxCollider.center = new Vector3 (-(float)distanceToStart / 2, boxCollider.center.y, boxCollider.center.z);
 
-		currentPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
+			currentPosition = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, 0);
 
-		//distanceToStart =  Mathf.Abs(currentPosition.x - startPosition.x);
-		distanceToDestination = Mathf.Abs(endPosition.x - currentPosition.x);
-		distanceComplete = Mathf.Abs(endPosition.x - startPosition.x);
+			//distanceToStart =  Mathf.Abs(currentPosition.x - startPosition.x);
+			distanceToDestination = Mathf.Abs (endPosition.x - currentPosition.x);
+			distanceComplete = Mathf.Abs (endPosition.x - startPosition.x);
 
-		time += Time.deltaTime;
-		if (time > 1) {
-			//Debug.Log (transform.position.x);
-		}
-			
-		if (distanceToDestination > 0){
-			distanceToStart += (kilometersPerSecond/1000000d) * Time.deltaTime* timeMultiplier;
-		}
-
-		if (distanceComplete > distanceToStart) {
-			if (destinationPlanet.position.x > startPlanet.position.x) {
-				transform.localPosition = (new Vector3 (startPlanet.position.x+(float)distanceToStart, transform.localPosition.y, transform.localPosition.z));
-				transform.localEulerAngles = new Vector3 (0, 0, 0);
-			} else {
-				transform.localPosition = (new Vector3 (startPlanet.position.x-(float)distanceToStart,transform.localPosition.y, transform.localPosition.z));
-				transform.localEulerAngles = new Vector3 (0, 180, 0);
+			time += Time.deltaTime;
+			if (time > 1) {
+				//Debug.Log (transform.position.x);
 			}
-		} else {
-			gameObject.transform.position = new Vector3(destinationPlanet.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+			
+			if (distanceToDestination > 0) {
+				distanceToStart += (kilometersPerSecond / 1000000d) * Time.deltaTime * timeMultiplier;
+			}
+
+			if (distanceComplete > distanceToStart) {
+				if (destinationPlanet.position.x > startPlanet.position.x) {
+					transform.localPosition = (new Vector3 (startPlanet.position.x + (float)distanceToStart, transform.localPosition.y, transform.localPosition.z));
+					transform.localEulerAngles = new Vector3 (0, 0, 0);
+				} else {
+					transform.localPosition = (new Vector3 (startPlanet.position.x - (float)distanceToStart, transform.localPosition.y, transform.localPosition.z));
+					transform.localEulerAngles = new Vector3 (0, 180, 0);
+				}
+			} else {
+				gameObject.transform.position = new Vector3 (destinationPlanet.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+			}
 		}
 	}
 }
