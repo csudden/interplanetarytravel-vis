@@ -56,6 +56,7 @@
      <Compile Include="Assets\CoordinateSystemScalingBehaviour.cs" />
      <Compile Include="Assets\MovementBehaviour.cs" />
      <Compile Include="Assets\ObjectScalingBehaviour.cs" />
+     <Compile Include="Assets\TagBehaviour.cs" />
      <Compile Include="Assets\TimelineCoordinatorBehaviour.cs" />
      <Compile Include="Assets\TimeMarkerBehaviour.cs" />
      <Compile Include="Assets\TrailCoordinatorBehaviour.cs" />

@@ -15,6 +15,16 @@ public class MovementBehaviour : MonoBehaviour {
 	public double distanceToDestination;
 	public double distanceComplete;
 
+	private GameObject spaceshipPositionMarker;
+
+	public void SetSpaceshipPositionMarker(GameObject marker){
+		spaceshipPositionMarker = marker;
+	}
+
+	public GameObject GetSpaceshipPositionMarker(){
+		return spaceshipPositionMarker;
+	}
+
 	public double kilometersPerSecond = 2.91f;
 	private float timeMultiplier = 1f;
 	// Use this for initialization

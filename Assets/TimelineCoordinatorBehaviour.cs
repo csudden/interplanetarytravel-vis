@@ -2,19 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class TimelineCoordinatorBehaviour : MonoBehaviour {
+public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
 	public Transform startPlanet;
 	public Transform destinationPlanet;
 
 	public RectTransform timelineContainer;
 	public RectTransform timeStepContainer;
+	public RectTransform bordersContainer;
 	public RectTransform planetMarkerContainer;
+	public RectTransform spaceshipPositionContainer;
 
 	public GameObject timeStepPrefab;
-	public GameObject currentPositionMarker;
+	public GameObject currentSpaceshipPositionMarker;
+	public GameObject currentCameraPositionMarker;
 	public GameObject planetPositionMarker;
+	public GameObject startPlanetMarker;
+	public GameObject destinationPlanetMarker;
+
 	private int timeStep = 100;
 	public float timeMultiplier = 1f;
 
@@ -32,6 +39,8 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 
 	public Gradient gradientSpaceshipSelected;
 	public Gradient gradientSpaceshipUnselected;
+	public Color colorSelected;
+	public Color colorUnselected;
 
 	public enum TimeStep {Minutes, Hours, Days, Months, Years};
 
@@ -148,19 +157,36 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 		//Debug.Log (" years: " + years + " months: " + months + " days: " + days + " hours: " + hours + " minutes: " + minutes + " seconds: " + seconds);
 		return seconds;
 	}
-		
+
 	public void StartJourneyAllShips(){
+		foreach (RectTransform t in spaceshipPositionContainer){
+			Destroy (t.gameObject);
+		}
+
 		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
 			mb.SetStartAndDestination(startPlanet, destinationPlanet);
+			startPlanetMarker.GetComponent<TagBehaviour> ().owner = startPlanet.gameObject;
+			destinationPlanetMarker.GetComponent<TagBehaviour> ().owner = destinationPlanet.gameObject;
 			if (mb != selectedMovementBehaviour) {
-				mb.GetComponentInChildren<TrailCoordinatorBehaviour> ().SetColorGradient(gradientSpaceshipUnselected);
+				mb.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient(gradientSpaceshipUnselected);
+
+				GameObject spaceShipPositionMarkerTmp = Instantiate (currentSpaceshipPositionMarker, spaceshipPositionContainer, false);
+				spaceShipPositionMarkerTmp.GetComponent<TagBehaviour>().owner = mb.gameObject;
+				mb.SetSpaceshipPositionMarker(spaceShipPositionMarkerTmp);
+
 			} else {
 				mb.GetComponentInChildren<TrailCoordinatorBehaviour> ().SetColorGradient(gradientSpaceshipSelected);
+
+				GameObject spaceShipPositionMarkerTmp = Instantiate (currentSpaceshipPositionMarker, spaceshipPositionContainer, false);
+				spaceShipPositionMarkerTmp.GetComponent<TagBehaviour>().owner = mb.gameObject;
+				mb.SetSpaceshipPositionMarker(spaceShipPositionMarkerTmp);
 			}
+
+			SelectSpaceship (selectedMovementBehaviour.gameObject);
+
 			mb.StartJourney();
 		}
 
-		selectedMovementBehaviour.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient (gradientSpaceshipSelected);
 		CreateTimesteps((int)TimeStep.Months);
 	}
 
@@ -180,6 +206,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 					//Debug.Log (movementBehaviour.distanceComplete+"disComp");
 					GameObject planetMarker = Instantiate (planetPositionMarker, planetMarkerContainer, false);
 					planetMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((float)(distance/selectedMovementBehaviour.distanceComplete) * containerSize, 0);
+					planetMarker.GetComponent<TagBehaviour> ().owner = planet;
 				}
 			}
 		} else if (selectedMovementBehaviour.destinationPlanet.transform.position.x < selectedMovementBehaviour.startPlanet.position.x) {
@@ -192,13 +219,46 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 					//Debug.Log (movementBehaviour.distanceComplete+"disComp");
 					GameObject planetMarker = Instantiate (planetPositionMarker, planetMarkerContainer, false);
 					planetMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((float)(distance/selectedMovementBehaviour.distanceComplete) * containerSize, 0);
+					planetMarker.GetComponent<TagBehaviour> ().owner = planet;
 				}
 			}
 		}
 	}
 
+	public void OnPointerDown(PointerEventData data){
+		Debug.Log (data.pointerCurrentRaycast.gameObject);
 
-	
+		GameObject selectedObject = data.pointerCurrentRaycast.gameObject;
+		if (selectedObject.GetComponent<TagBehaviour> () != null) {
+			GameObject owner = selectedObject.GetComponent<TagBehaviour> ().owner;
+			if (owner != null && selectedObject.transform.parent == spaceshipPositionContainer) {
+				SelectSpaceship (owner);
+			}else if(owner != null && (selectedObject.transform.parent == planetMarkerContainer || selectedObject.transform.parent == bordersContainer)){
+				Camera.main.GetComponent<CameraFollowBehaviour>().SetObjectToFollow (owner);
+			}
+		}
+	}
+
+	void SelectSpaceship(GameObject spaceship){
+		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
+			mb.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient(gradientSpaceshipUnselected);
+		}
+
+		selectedMovementBehaviour = spaceship.GetComponent<MovementBehaviour>();
+		selectedMovementBehaviour.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient(gradientSpaceshipSelected);
+
+		foreach (Transform spaceshipMarker in spaceshipPositionContainer) {
+			if (spaceshipMarker.GetComponent<TagBehaviour> ().owner == spaceship) {
+				spaceshipMarker.GetComponent<Image> ().color = colorSelected;
+			} else {
+				spaceshipMarker.GetComponent<Image> ().color = colorUnselected;
+			}
+		}
+
+		CreateTimesteps((int)timestepSetting);
+		Camera.main.GetComponent<CameraFollowBehaviour>().SetObjectToFollow(selectedMovementBehaviour.gameObject);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		GetTimePassed ();
@@ -207,19 +267,12 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 
 		if (Input.GetMouseButtonDown (0)) {
 			RaycastHit[] hit;
-			hit = Physics.RaycastAll (Camera.main.ScreenPointToRay (Input.mousePosition),20f);
+			hit = Physics.RaycastAll (Camera.main.ScreenPointToRay (Input.mousePosition),2000f);
 			if (hit.Length>0) {
 				Debug.Log ("Length: " + hit.Length);
 				foreach (RaycastHit h in hit) {
 					if (h.collider.gameObject.layer == 8) {
-						foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
-							mb.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient(gradientSpaceshipUnselected);
-						}
-						Debug.Log (h.collider.gameObject.name + " was hit with distance: " + h.distance);
-						selectedMovementBehaviour = h.collider.gameObject.GetComponent<MovementBehaviour>();
-						selectedMovementBehaviour.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient(gradientSpaceshipSelected);
-						CreateTimesteps((int)timestepSetting);
-						Camera.main.GetComponent<CameraFollowBehaviour> ().SetObjectToFollow(selectedMovementBehaviour.gameObject);
+						SelectSpaceship (h.collider.gameObject);
 					}
 				}
 			}
@@ -228,15 +281,19 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour {
 		// Apply Time Scaling to all available Spaceships
 		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
 			mb.SetTimeMultiplier(timeMultiplier);
-		}
+			if (mb.distanceToStart != 0) {
+				GameObject marker = mb.GetSpaceshipPositionMarker ();
+				if (marker != null) {
+					marker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((float)(mb.distanceToStart / mb.distanceComplete) * timelineContainer.rect.width, 0);
+				}
 
-		float containerSize = timelineContainer.rect.width;
+				currentCameraPositionMarker.GetComponent<RectTransform>().anchoredPosition = new Vector2 (timelineContainer.rect.width * ((Camera.main.transform.position.x - startPlanet.transform.position.x)/(float)selectedMovementBehaviour.distanceComplete), 0);
+				CreatePlanetMarkersInTimeline();
+			}
 
-		//Debug.Log (GetTimePassed ()+ " Timepassed seconds");
-		if (selectedMovementBehaviour.distanceToStart != 0) {
-			Debug.Log (selectedMovementBehaviour.distanceToStart);
-			currentPositionMarker.GetComponent<RectTransform>().anchoredPosition = new Vector2 (timelineContainer.rect.width * ((float)selectedMovementBehaviour.distanceToStart/(float)selectedMovementBehaviour.distanceComplete), 0);
-			CreatePlanetMarkersInTimeline();
 		}
+			
+
+
 	}
 }
