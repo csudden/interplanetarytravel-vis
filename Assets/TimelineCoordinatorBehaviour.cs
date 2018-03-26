@@ -272,6 +272,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		if (selectedObject.GetComponent<TagBehaviour> () != null) {
 			GameObject owner = selectedObject.GetComponent<TagBehaviour> ().owner;
 			if (owner != null && selectedObject.transform.parent == spaceshipPositionContainer) {
+				selectedObject.GetComponent<RectTransform> ().SetAsFirstSibling();
 				SelectSpaceship (owner);
 			}else if(owner != null && (selectedObject.transform.parent == planetMarkerContainer || selectedObject.transform.parent == bordersContainer)){
 				Camera.main.GetComponent<CameraFollowBehaviour>().SetObjectToFollow (owner);
@@ -289,15 +290,20 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		selectedMovementBehaviour.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient(gradientSpaceshipSelected);
 		selectedMovementBehaviour.GetComponentInChildren<TrailCoordinatorBehaviour> ().SetToFront ();
 
+		GameObject selectedMarker = null;
 		foreach (Transform spaceshipMarker in spaceshipPositionContainer) {
 			if (spaceshipMarker.GetComponent<TagBehaviour> ().owner == spaceship) {
 				spaceshipMarker.GetComponent<Image> ().color = colorSelected;
+				selectedMarker = spaceshipMarker.gameObject;
 			} else {
 				GameObject owner = spaceshipMarker.GetComponent<TagBehaviour> ().owner;
-					spaceshipMarker.GetComponent<Image> ().color = colorUnselected;
+				spaceshipMarker.GetComponent<Image> ().color = colorUnselected;
+				//spaceshipMarker.GetComponent<RectTransform> ().SetAsFirstSibling ();
 			}
 		}
-
+		if (selectedMarker != null) {
+			selectedMarker.GetComponent<RectTransform> ().SetAsLastSibling ();
+		}
 		CreateTimesteps((int)timestepSetting);
 		Camera.main.GetComponent<CameraFollowBehaviour>().SetObjectToFollow(selectedMovementBehaviour.gameObject);
 	}
