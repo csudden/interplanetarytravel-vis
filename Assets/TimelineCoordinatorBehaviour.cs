@@ -36,6 +36,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 	public Text hoursPassed;
 	public Text minutesPassed;
 	public Text secondsPassed;
+	public Text unitsDisplay;
 
 	public Gradient gradientSpaceshipSelected;
 	public Gradient gradientSpaceshipUnselected;
@@ -86,6 +87,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 	}
 		
 	public void CreateTimesteps(int type){
+		unitsDisplay.text = ((TimeStep)type).ToString();
 		foreach (RectTransform t in timeStepContainer){
 			Destroy (t.gameObject);
 		}
@@ -250,8 +252,15 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		foreach (Transform spaceshipMarker in spaceshipPositionContainer) {
 			if (spaceshipMarker.GetComponent<TagBehaviour> ().owner == spaceship) {
 				spaceshipMarker.GetComponent<Image> ().color = colorSelected;
+				//spaceship.transform.GetChild(0).position = new Vector3 (spaceship.transform.GetChild(0).transform.position.x, spaceship.transform.GetChild(0).transform.position.y, -10f);
 			} else {
-				spaceshipMarker.GetComponent<Image> ().color = colorUnselected;
+
+				GameObject owner = spaceshipMarker.GetComponent<TagBehaviour> ().owner;
+				if (owner != null) {
+					//owner.transform.GetChild(0).transform.position = new Vector3 (owner.transform.GetChild(0).transform.position.x, owner.transform.GetChild(0).transform.position.y, 0f);
+				}
+					spaceshipMarker.GetComponent<Image> ().color = colorUnselected;
+				
 			}
 		}
 
