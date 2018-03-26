@@ -16123,8 +16123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8417f7a9e161f488e33aa6d24d0f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPlanet: {fileID: 1312250474}
-  destinationPlanet: {fileID: 719414136}
+  startPlanet: {fileID: 1377193317}
+  destinationPlanet: {fileID: 2100558998}
   timelineContainer: {fileID: 2025585433}
   timeStepContainer: {fileID: 183287234}
   bordersContainer: {fileID: 861378784}
