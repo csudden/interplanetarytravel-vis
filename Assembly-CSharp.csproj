@@ -54,8 +54,10 @@
      <Compile Include="Assets\CameraFollowBehaviour.cs" />
      <Compile Include="Assets\CoordinateSystemCreator.cs" />
      <Compile Include="Assets\CoordinateSystemScalingBehaviour.cs" />
+     <Compile Include="Assets\MouseCursorFollowBehaviour.cs" />
      <Compile Include="Assets\MovementBehaviour.cs" />
      <Compile Include="Assets\ObjectScalingBehaviour.cs" />
+     <Compile Include="Assets\PlanetSystemCoordination.cs" />
      <Compile Include="Assets\Spidergraph\RadarChart.cs" />
      <Compile Include="Assets\Spidergraph\RadarChart2.cs" />
      <Compile Include="Assets\TagBehaviour.cs" />

@@ -135,21 +135,22 @@ public class MovementBehaviour : MonoBehaviour {
 			if (time > 1) {
 				//Debug.Log (transform.position.x);
 			}
-
+				
 			if (distanceComplete > distanceToStart) {
 				if (destinationPlanet.position.x > startPlanet.position.x) {
-					transform.localPosition = (new Vector3 (startPlanet.position.x + (float)distanceToStart, transform.localPosition.y, transform.localPosition.z));
+					transform.position = (new Vector3 (startPlanet.position.x + (float)distanceToStart, transform.position.y, transform.position.z));
 					transform.localEulerAngles = new Vector3 (0, 0, 0);
 					destinationOnRight = true;
 				} else {
-					transform.localPosition = (new Vector3 (startPlanet.position.x - (float)distanceToStart, transform.localPosition.y, transform.localPosition.z));
+					transform.position = (new Vector3 (startPlanet.position.x - (float)distanceToStart, transform.position.y, transform.position.z));
 					transform.localEulerAngles = new Vector3 (0, 180, 0);
 					destinationOnRight = false;
 				}
 			} else {
 				gameObject.transform.position = new Vector3 (destinationPlanet.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+				distanceToStart = distanceComplete;
+				distanceToDestination = 0d;
 			}
-
 			if (distanceToDestination > 0d) {
 				distanceToStart += (kilometersPerSecond / 1000000d) * (double)Time.fixedDeltaTime * (double)timeMultiplier;
 			}

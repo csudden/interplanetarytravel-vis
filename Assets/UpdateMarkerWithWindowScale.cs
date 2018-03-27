@@ -8,7 +8,9 @@ public class UpdateMarkerWithWindowScale : UIBehaviour {
 
 	TimelineCoordinatorBehaviour tcb;
 	// Use this for initialization
+
 	void Start () {
+		base.Start ();
 		tcb = gameObject.GetComponent<TimelineCoordinatorBehaviour> ();
 	}
 	

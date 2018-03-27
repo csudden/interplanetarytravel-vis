@@ -6,9 +6,12 @@ public class CameraFollowBehaviour : MonoBehaviour {
 
 	public GameObject objectToFollow;
 	public bool followObject = true;
+
+
+
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 
 	public void ResetFocus(bool resetScale){
@@ -35,7 +38,7 @@ public class CameraFollowBehaviour : MonoBehaviour {
 	Vector3 mousePositionNew;
 	float scaleDelta;
 	void Update () {
-		if (followObject) {
+		if (followObject && objectToFollow != null) {
 			gameObject.transform.position = new Vector3 (draggedCameraPosition.x+objectToFollow.transform.position.x, draggedCameraPosition.y/7.5f + (objectToFollow.transform.position.y - Camera.main.orthographicSize/5) + offsetY, gameObject.transform.position.z);
 		}
 

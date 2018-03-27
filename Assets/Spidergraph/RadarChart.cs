@@ -25,29 +25,19 @@ public class RadarChart : MonoBehaviour {
 	}
 
 	void Update(){
-		//if ((int)Time.time % 1 == 0) {
 			if (tcb != null) {
 				if (tcb.selectedMovementBehaviour != null) {
 					// DIRTY PROC TO MAKE TINY VALUES VISIBLE IN SPIDERGRAPH TODO: REVISE IF THERE IS TIME
 					float p = 10f;
 					float multiplier = 1f;
+					float offset = 1.5f;
 					if (tcb.maxSize != 0 && tcb.maxThrust != 0 && tcb.maxPayload != 0 && tcb.maxSpeed != 0 && tcb.maxWeight != 0) {
-					if ((tcb.selectedMovementBehaviour.sizeMeters / tcb.maxSize) >= 0.5f || (tcb.selectedMovementBehaviour.thrustKiloNewton / tcb.maxThrust) >= 0.5f || (tcb.selectedMovementBehaviour.payloadKilogramm / tcb.maxPayload) >= 0.5f || ((float)tcb.selectedMovementBehaviour.kilometersPerSecond / tcb.maxSpeed) >= 0.5f ||  (tcb.selectedMovementBehaviour.weightKilogramm / tcb.maxWeight) >= 0.5f) {
-							SetValue (0, (float)(Mathf.Log (10 * ((multiplier * tcb.selectedMovementBehaviour.sizeMeters / tcb.maxSize)) + 1, p)));
-							SetValue (1, (float)(Mathf.Log (10 * ((multiplier * tcb.selectedMovementBehaviour.thrustKiloNewton / tcb.maxThrust)) + 1, p)));
-							SetValue (2, (float)(Mathf.Log (10 * ((multiplier * tcb.selectedMovementBehaviour.payloadKilogramm / tcb.maxPayload)) + 1, p)));
-							SetValue (3, (float)(Mathf.Log (10 * ((multiplier * (float)tcb.selectedMovementBehaviour.kilometersPerSecond / tcb.maxSpeed)) + 1, p)));
-							SetValue (4, (float)(Mathf.Log (10 * ((multiplier * tcb.selectedMovementBehaviour.weightKilogramm / tcb.maxWeight)) + 1, p)));
-						}else {
-							multiplier = 5f;
-						Debug.Log ("huihGFFD");
-							SetValue (0, (float)(Mathf.Log (10 * ((multiplier * tcb.selectedMovementBehaviour.sizeMeters / tcb.maxSize)) + 1, p)));
-							SetValue (1, (float)(Mathf.Log (10 * ((multiplier * tcb.selectedMovementBehaviour.thrustKiloNewton / tcb.maxThrust)) + 1, p)));
-							SetValue (2, (float)(Mathf.Log (10 * ((multiplier * tcb.selectedMovementBehaviour.payloadKilogramm / tcb.maxPayload)) + 1, p)));
-							SetValue (3, (float)(Mathf.Log (10 * ((multiplier * (float)tcb.selectedMovementBehaviour.kilometersPerSecond / tcb.maxSpeed)) + 1, p)));
-							SetValue (4, (float)(Mathf.Log (10 * ((multiplier * tcb.selectedMovementBehaviour.weightKilogramm / tcb.maxWeight)) + 1, p)));
-						}
-					} 
+						SetValue (0, (float)(Mathf.Log (10 * ((multiplier * tcb.selectedMovementBehaviour.sizeMeters / tcb.maxSize)) + offset, p)));
+						SetValue (1, (float)(Mathf.Log (10 * ((multiplier * tcb.selectedMovementBehaviour.thrustKiloNewton / tcb.maxThrust)) + offset, p)));
+						SetValue (2, (float)(Mathf.Log (10 * ((multiplier * tcb.selectedMovementBehaviour.payloadKilogramm / tcb.maxPayload)) + offset, p)));
+						SetValue (3, (float)(Mathf.Log (10 * ((multiplier * (float)tcb.selectedMovementBehaviour.kilometersPerSecond / tcb.maxSpeed)) + offset, p)));
+						SetValue (4, (float)(Mathf.Log (10 * ((multiplier * tcb.selectedMovementBehaviour.weightKilogramm / tcb.maxWeight)) + offset, p)));
+					}
 				}
 			}
 	}

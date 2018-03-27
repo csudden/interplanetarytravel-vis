@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.SceneManagement;
 
 public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
 	public Transform startPlanet;
 	public Transform destinationPlanet;
 
+	public RectTransform timelineContent;
 	public RectTransform timelineContainer;
 	public RectTransform timeStepContainer;
 	public RectTransform bordersContainer;
@@ -24,6 +26,8 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 	public GameObject planetPositionMarker;
 	public GameObject startPlanetMarker;
 	public GameObject destinationPlanetMarker;
+
+	public GameObject infoPanelMiddle;
 
 	private int timeStep = 100;
 	public float timeMultiplier = 1f;
@@ -56,11 +60,14 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		movementBehaviourSpaceships = spaceshipParent.GetComponentsInChildren<MovementBehaviour>();
 		timestepSetting = TimeStep.Months;
 		StartCoroutine (LateStart (0.01f));
+
+		planetSystemOverview.SetActive (true);
+		timelineContent.gameObject.SetActive (false);
 	}
 
 	IEnumerator LateStart(float waitTime){
 		yield return new WaitForSeconds (waitTime);
-		StartJourneyAllShips();
+		//StartJourneyAllShips();
 	}
 
 	public void SetPlaybackSpeed(float multiplier){
@@ -68,7 +75,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 	}
 
 	public void SetNextPlaybackSpeed(Text btnText){
-		if (timeMultiplier <= 100000000) {
+		if (timeMultiplier <= 1000000000) {
 			timeMultiplier *= 10;
 		}
 		btnText.text = timeMultiplier.ToString ("n0");
@@ -166,7 +173,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 				timeStepMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (i, 0);
 			}
 		} else {
-			Debug.Log ("Timestep too dense");
+			//Debug.Log ("Timestep too dense");
 			GameObject timeStepMarker = Instantiate (timeStepTooDenseMarker, timeStepContainer, false);
 		}
 	}
@@ -207,52 +214,59 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 	public float maxSize = 0f;
 
 	public void StartJourneyAllShips(){
-		foreach (RectTransform t in spaceshipPositionContainer){
-			Destroy (t.gameObject);
-		}
+		timelineContent.gameObject.SetActive (true);
+		infoPanelMiddle.SetActive (true);
+		planetSystemOverview.SetActive (false);
+
+		if (startPlanet != null && destinationPlanet != null) {
+			foreach (RectTransform t in spaceshipPositionContainer) {
+				Destroy (t.gameObject);
+			}
 			
-		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
-			// TODO: GETTER/SETTER
-			if (mb.kilometersPerSecond > maxSpeed) {
-				maxSpeed = (float)mb.kilometersPerSecond;
-			}
-			if (mb.weightKilogramm > maxWeight) {
-				maxWeight = mb.weightKilogramm;
-			}
-			if (mb.payloadKilogramm > maxPayload) {
-				maxPayload = mb.payloadKilogramm;
-			}
-			if (mb.thrustKiloNewton > maxThrust) {
-				maxThrust = mb.thrustKiloNewton;
-			}
-			if (mb.sizeMeters > maxSize) {
-				maxSize = mb.sizeMeters;
-			}
+			foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
+				// TODO: GETTER/SETTER
+				if (mb.kilometersPerSecond > maxSpeed) {
+					maxSpeed = (float)mb.kilometersPerSecond;
+				}
+				if (mb.weightKilogramm > maxWeight) {
+					maxWeight = mb.weightKilogramm;
+				}
+				if (mb.payloadKilogramm > maxPayload) {
+					maxPayload = mb.payloadKilogramm;
+				}
+				if (mb.thrustKiloNewton > maxThrust) {
+					maxThrust = mb.thrustKiloNewton;
+				}
+				if (mb.sizeMeters > maxSize) {
+					maxSize = mb.sizeMeters;
+				}
 
-			mb.SetStartAndDestination(startPlanet, destinationPlanet);
-			startPlanetMarker.GetComponent<TagBehaviour> ().owner = startPlanet.gameObject;
-			destinationPlanetMarker.GetComponent<TagBehaviour> ().owner = destinationPlanet.gameObject;
-			if (mb != selectedMovementBehaviour) {
-				mb.GetComponentInChildren<TrailCoordinatorBehaviour>().SetColorGradient(gradientSpaceshipUnselected);
+				mb.SetStartAndDestination (startPlanet, destinationPlanet);
+				startPlanetMarker.GetComponent<TagBehaviour> ().owner = startPlanet.gameObject;
+				destinationPlanetMarker.GetComponent<TagBehaviour> ().owner = destinationPlanet.gameObject;
+				if (mb != selectedMovementBehaviour) {
+					mb.GetComponentInChildren<TrailCoordinatorBehaviour> ().SetColorGradient (gradientSpaceshipUnselected);
 
-				GameObject spaceShipPositionMarkerTmp = Instantiate (currentSpaceshipPositionMarker, spaceshipPositionContainer, false);
-				spaceShipPositionMarkerTmp.GetComponent<TagBehaviour>().owner = mb.gameObject;
-				mb.SetSpaceshipPositionMarker(spaceShipPositionMarkerTmp);
+					GameObject spaceShipPositionMarkerTmp = Instantiate (currentSpaceshipPositionMarker, spaceshipPositionContainer, false);
+					spaceShipPositionMarkerTmp.GetComponent<TagBehaviour> ().owner = mb.gameObject;
+					mb.SetSpaceshipPositionMarker (spaceShipPositionMarkerTmp);
 
-			} else {
-				mb.GetComponentInChildren<TrailCoordinatorBehaviour> ().SetColorGradient(gradientSpaceshipSelected);
+				} else {
+					mb.GetComponentInChildren<TrailCoordinatorBehaviour> ().SetColorGradient (gradientSpaceshipSelected);
 
-				GameObject spaceShipPositionMarkerTmp = Instantiate (currentSpaceshipPositionMarker, spaceshipPositionContainer, false);
-				spaceShipPositionMarkerTmp.GetComponent<TagBehaviour>().owner = mb.gameObject;
-				mb.SetSpaceshipPositionMarker(spaceShipPositionMarkerTmp);
+					GameObject spaceShipPositionMarkerTmp = Instantiate (currentSpaceshipPositionMarker, spaceshipPositionContainer, false);
+					spaceShipPositionMarkerTmp.GetComponent<TagBehaviour> ().owner = mb.gameObject;
+					mb.SetSpaceshipPositionMarker (spaceShipPositionMarkerTmp);
+				}
+
+				SelectSpaceship (selectedMovementBehaviour.gameObject);
+				Camera.main.GetComponent<CameraFollowBehaviour> ().ResetFocus (false);
+				mb.StartJourney ();
 			}
-
-			SelectSpaceship (selectedMovementBehaviour.gameObject);
-			Camera.main.GetComponent<CameraFollowBehaviour> ().ResetFocus (false);
-			mb.StartJourney();
-		}
+		
 
 		CreateTimesteps((int)timestepSetting);
+		}
 	}
 
 	void CreatePlanetMarkersInTimeline(){
@@ -292,7 +306,6 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
 	public void OnPointerDown(PointerEventData data){
 		Debug.Log (data.pointerCurrentRaycast.gameObject);
-		Debug.Log ("tfzgcvftzgj");
 		GameObject selectedObject = data.pointerCurrentRaycast.gameObject;
 		if (selectedObject.GetComponent<TagBehaviour> () != null) {
 			GameObject owner = selectedObject.GetComponent<TagBehaviour> ().owner;
@@ -333,6 +346,9 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		Camera.main.GetComponent<CameraFollowBehaviour>().SetObjectToFollow(selectedMovementBehaviour.gameObject);
 	}
 
+
+	public GameObject planetSystemOverview;
+
 	// Update is called once per frame
 	void Update () {
 		GetTimePassed ();
@@ -348,6 +364,25 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 					Debug.Log ("Length: " + hit.Length + "Object: " + h.collider.gameObject.name);
 					if (h.collider.gameObject.layer == 8) {
 						SelectSpaceship (h.collider.gameObject);
+					}
+
+					if (h.collider.gameObject.tag == "SourceAndDestinationPlanet") {
+						GameObject[] planets = coordinateSystemCreator.planets.ToArray();
+
+						foreach (GameObject startP in planets) {
+							if (h.collider.gameObject.name == startP.name) {
+								
+								if (startPlanet == null) {
+									startPlanet = startP.transform;
+								} else {
+									destinationPlanet = startP.transform;
+								}
+
+								if (startPlanet && destinationPlanet != null) {
+									StartJourneyAllShips ();
+								}
+							}
+						}
 					}
 				}
 			}
@@ -372,6 +407,10 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
 		}
 			
+	}
+
+	public void RestartScene(){
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name.ToString(),LoadSceneMode.Single);
 	}
 
 }
