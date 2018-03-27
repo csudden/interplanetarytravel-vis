@@ -54,10 +54,12 @@
      <Compile Include="Assets\CameraFollowBehaviour.cs" />
      <Compile Include="Assets\CoordinateSystemCreator.cs" />
      <Compile Include="Assets\CoordinateSystemScalingBehaviour.cs" />
+     <Compile Include="Assets\HighlightingBehaviour.cs" />
      <Compile Include="Assets\MouseCursorFollowBehaviour.cs" />
      <Compile Include="Assets\MovementBehaviour.cs" />
      <Compile Include="Assets\ObjectScalingBehaviour.cs" />
      <Compile Include="Assets\PlanetSystemCoordination.cs" />
+     <Compile Include="Assets\SourceTargetSelectionIllustrationBehaviour.cs" />
      <Compile Include="Assets\Spidergraph\RadarChart.cs" />
      <Compile Include="Assets\Spidergraph\RadarChart2.cs" />
      <Compile Include="Assets\TagBehaviour.cs" />
@@ -73,6 +75,7 @@
      <None Include="Assets\Shaders\Builtins\Bloom.shader" />
      <None Include="Assets\Shaders\xRLib.hlsl" />
      <None Include="Assets\Shaders\Builtins\MultiScaleVOUpsample.compute" />
+     <None Include="Assets\Shaders\UnlitTransparent.shader" />
      <None Include="Assets\Shaders\API\PSSL.hlsl" />
      <None Include="Assets\Shaders\Debug\Vectorscope.shader" />
      <None Include="Assets\Shaders\Builtins\GaussianDownsample.compute" />

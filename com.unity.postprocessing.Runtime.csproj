@@ -115,6 +115,7 @@
      <None Include="Assets\Shaders\Builtins\Bloom.shader" />
      <None Include="Assets\Shaders\xRLib.hlsl" />
      <None Include="Assets\Shaders\Builtins\MultiScaleVOUpsample.compute" />
+     <None Include="Assets\Shaders\UnlitTransparent.shader" />
      <None Include="Assets\Shaders\API\PSSL.hlsl" />
      <None Include="Assets\Shaders\Debug\Vectorscope.shader" />
      <None Include="Assets\Shaders\Builtins\GaussianDownsample.compute" />

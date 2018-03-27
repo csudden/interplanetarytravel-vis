@@ -73,8 +73,8 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
 	void switchToRegularPlanetSystemView(){
 		timelineContent.gameObject.SetActive (true);
-		infoPanelMiddle.SetActive (true);
 		planetSystemOverview.SetActive (false);
+		jumpToSpaceshipPositionButton.gameObject.SetActive (true);
 	}
 		
 	IEnumerator LateStart(float waitTime){
