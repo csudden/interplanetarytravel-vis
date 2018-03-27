@@ -27,7 +27,13 @@ public class MovementBehaviour : MonoBehaviour {
 		return spaceshipPositionMarker;
 	}
 
+	[Header("Spaceship Attributes")]
 	public double kilometersPerSecond = 2.91f;
+	public float weightKilogramm;
+	public float payloadKilogramm;
+	public float thrustKiloNewton;
+	public float sizeMeters;
+
 	private float timeMultiplier = 1f;
 	// Use this for initialization
 	void Start () {

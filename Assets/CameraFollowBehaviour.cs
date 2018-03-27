@@ -14,7 +14,7 @@ public class CameraFollowBehaviour : MonoBehaviour {
 	public void ResetFocus(bool resetScale){
 		draggedCameraPosition = Vector3.zero;
 		if (resetScale) {
-			Camera.main.orthographicSize = 0.1f;
+			Camera.main.orthographicSize = 0.01f;
 		}
 	}
 
@@ -36,7 +36,7 @@ public class CameraFollowBehaviour : MonoBehaviour {
 	float scaleDelta;
 	void Update () {
 		if (followObject) {
-			gameObject.transform.position = new Vector3 (draggedCameraPosition.x+objectToFollow.transform.position.x, objectToFollow.transform.position.y - Camera.main.orthographicSize/5 + offsetY, gameObject.transform.position.z);
+			gameObject.transform.position = new Vector3 (draggedCameraPosition.x+objectToFollow.transform.position.x, draggedCameraPosition.y/7.5f + (objectToFollow.transform.position.y - Camera.main.orthographicSize/5) + offsetY, gameObject.transform.position.z);
 		}
 
 		if (Input.GetKey(KeyCode.F)) {

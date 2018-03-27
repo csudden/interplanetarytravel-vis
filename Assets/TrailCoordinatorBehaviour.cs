@@ -34,7 +34,6 @@ public class TrailCoordinatorBehaviour : MonoBehaviour {
 	public void SetToFront(){
 		if (lineRenderer != null) {
 			for (int i = 0; i < lineRenderer.positionCount; ++i) {
-				Debug.Log ("huiHUI" +i);
 				Vector3 position = lineRenderer.GetPosition (i);
 				lineRenderer.SetPosition(i, new Vector3(position.x,position.y,-5));
 			}

@@ -15,6 +15,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 	public RectTransform bordersContainer;
 	public RectTransform planetMarkerContainer;
 	public RectTransform spaceshipPositionContainer;
+	public RectTransform spacecraftSelectionSet;
 
 	public GameObject timeStepPrefab;
 	public GameObject timeStepTooDenseMarker;
@@ -198,12 +199,36 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		return seconds;
 	}
 
+
+	public float maxSpeed = 0f;
+	public float maxWeight = 0f;
+	public float maxPayload = 0f;
+	public float maxThrust = 0f;
+	public float maxSize = 0f;
+
 	public void StartJourneyAllShips(){
 		foreach (RectTransform t in spaceshipPositionContainer){
 			Destroy (t.gameObject);
 		}
-
+			
 		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
+			// TODO: GETTER/SETTER
+			if (mb.kilometersPerSecond > maxSpeed) {
+				maxSpeed = (float)mb.kilometersPerSecond;
+			}
+			if (mb.weightKilogramm > maxWeight) {
+				maxWeight = mb.weightKilogramm;
+			}
+			if (mb.payloadKilogramm > maxPayload) {
+				maxPayload = mb.payloadKilogramm;
+			}
+			if (mb.thrustKiloNewton > maxThrust) {
+				maxThrust = mb.thrustKiloNewton;
+			}
+			if (mb.sizeMeters > maxSize) {
+				maxSize = mb.sizeMeters;
+			}
+
 			mb.SetStartAndDestination(startPlanet, destinationPlanet);
 			startPlanetMarker.GetComponent<TagBehaviour> ().owner = startPlanet.gameObject;
 			destinationPlanetMarker.GetComponent<TagBehaviour> ().owner = destinationPlanet.gameObject;
@@ -267,11 +292,11 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
 	public void OnPointerDown(PointerEventData data){
 		Debug.Log (data.pointerCurrentRaycast.gameObject);
-
+		Debug.Log ("tfzgcvftzgj");
 		GameObject selectedObject = data.pointerCurrentRaycast.gameObject;
 		if (selectedObject.GetComponent<TagBehaviour> () != null) {
 			GameObject owner = selectedObject.GetComponent<TagBehaviour> ().owner;
-			if (owner != null && selectedObject.transform.parent == spaceshipPositionContainer) {
+			if (owner != null && selectedObject.transform.parent == spaceshipPositionContainer || selectedObject.transform.parent == spacecraftSelectionSet) {
 				selectedObject.GetComponent<RectTransform> ().SetAsFirstSibling();
 				SelectSpaceship (owner);
 			}else if(owner != null && (selectedObject.transform.parent == planetMarkerContainer || selectedObject.transform.parent == bordersContainer)){
@@ -318,8 +343,9 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 			RaycastHit[] hit;
 			hit = Physics.RaycastAll (Camera.main.ScreenPointToRay (Input.mousePosition),2000f);
 			if (hit.Length>0) {
-				Debug.Log ("Length: " + hit.Length);
+
 				foreach (RaycastHit h in hit) {
+					Debug.Log ("Length: " + hit.Length + "Object: " + h.collider.gameObject.name);
 					if (h.collider.gameObject.layer == 8) {
 						SelectSpaceship (h.collider.gameObject);
 					}
