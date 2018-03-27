@@ -33451,6 +33451,7 @@ MonoBehaviour:
   planetMarkerContainer: {fileID: 507919090}
   spaceshipPositionContainer: {fileID: 1869635026}
   spacecraftSelectionSet: {fileID: 2134389850}
+  jumpToSpaceshipPositionButton: {fileID: 2072666164}
   timeStepPrefab: {fileID: 1978586058570032, guid: 798825706c2908a42bdaa0fb5f032ac0,
     type: 2}
   timeStepTooDenseMarker: {fileID: 1371860331903716, guid: 9aa63f21722f62b4c9334914d1b5ef2e,

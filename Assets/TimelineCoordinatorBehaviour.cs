@@ -18,6 +18,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 	public RectTransform planetMarkerContainer;
 	public RectTransform spaceshipPositionContainer;
 	public RectTransform spacecraftSelectionSet;
+	public RectTransform jumpToSpaceshipPositionButton;
 
 	public GameObject timeStepPrefab;
 	public GameObject timeStepTooDenseMarker;
@@ -61,10 +62,21 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		timestepSetting = TimeStep.Months;
 		StartCoroutine (LateStart (0.01f));
 
-		planetSystemOverview.SetActive (true);
-		timelineContent.gameObject.SetActive (false);
+		switchToPlanetSystemOverview ();
 	}
 
+	void switchToPlanetSystemOverview(){
+		planetSystemOverview.SetActive (true);
+		timelineContent.gameObject.SetActive (false);
+		jumpToSpaceshipPositionButton.gameObject.SetActive (false);
+	}
+
+	void switchToRegularPlanetSystemView(){
+		timelineContent.gameObject.SetActive (true);
+		infoPanelMiddle.SetActive (true);
+		planetSystemOverview.SetActive (false);
+	}
+		
 	IEnumerator LateStart(float waitTime){
 		yield return new WaitForSeconds (waitTime);
 		//StartJourneyAllShips();
@@ -214,9 +226,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 	public float maxSize = 0f;
 
 	public void StartJourneyAllShips(){
-		timelineContent.gameObject.SetActive (true);
-		infoPanelMiddle.SetActive (true);
-		planetSystemOverview.SetActive (false);
+		switchToRegularPlanetSystemView ();
 
 		if (startPlanet != null && destinationPlanet != null) {
 			foreach (RectTransform t in spaceshipPositionContainer) {

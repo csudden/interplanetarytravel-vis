@@ -24,10 +24,12 @@ public class RadarChart : MonoBehaviour {
 		}
 	}
 
+	MovementBehaviour movementBehaviour;
 	void Update(){
 			if (tcb != null) {
-				if (tcb.selectedMovementBehaviour != null) {
-					// DIRTY PROC TO MAKE TINY VALUES VISIBLE IN SPIDERGRAPH TODO: REVISE IF THERE IS TIME
+				if (tcb.selectedMovementBehaviour != null && tcb.selectedMovementBehaviour != movementBehaviour) {
+					movementBehaviour = tcb.selectedMovementBehaviour;
+					Debug.Log ("Chart updated");
 					float p = 10f;
 					float multiplier = 1f;
 					float offset = 1.5f;

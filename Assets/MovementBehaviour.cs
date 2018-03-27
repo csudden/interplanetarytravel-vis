@@ -135,6 +135,10 @@ public class MovementBehaviour : MonoBehaviour {
 			if (time > 1) {
 				//Debug.Log (transform.position.x);
 			}
+
+			if (distanceToDestination > 0d) {
+				distanceToStart += (kilometersPerSecond / 1000000d) * (double)Time.fixedDeltaTime * (double)timeMultiplier;
+			}
 				
 			if (distanceComplete > distanceToStart) {
 				if (destinationPlanet.position.x > startPlanet.position.x) {
@@ -151,9 +155,7 @@ public class MovementBehaviour : MonoBehaviour {
 				distanceToStart = distanceComplete;
 				distanceToDestination = 0d;
 			}
-			if (distanceToDestination > 0d) {
-				distanceToStart += (kilometersPerSecond / 1000000d) * (double)Time.fixedDeltaTime * (double)timeMultiplier;
-			}
+
 
 			UpdateLineRenderer ();
 		}
