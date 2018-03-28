@@ -51,7 +51,7 @@ public class HighlightingBehaviour : MonoBehaviour, IPointerEnterHandler, IPoint
 	public void OnPointerExit (PointerEventData eventData)
 	{
 		if (img != null) {
-			img.color = new Color (initialColor.r, initialColor.g, initialColor.b);
+			img.color = new Color (initialColor.r, initialColor.g, initialColor.b, initialColor.a);
 		}
 
 		if (mr != null) {

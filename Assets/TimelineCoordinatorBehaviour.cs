@@ -398,7 +398,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 			}
 		}
 
-		// Apply Time Scaling to all available Spaceships
+		// Apply Time Scaling to all available Spaceships TODO: do it more performant instead
 		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
 			mb.SetTimeMultiplier(timeMultiplier);
 			if (mb.distanceToStart != 0) {

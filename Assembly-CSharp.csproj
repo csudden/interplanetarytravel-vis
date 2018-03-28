@@ -54,6 +54,7 @@
      <Compile Include="Assets\CameraFollowBehaviour.cs" />
      <Compile Include="Assets\CoordinateSystemCreator.cs" />
      <Compile Include="Assets\CoordinateSystemScalingBehaviour.cs" />
+     <Compile Include="Assets\DisplayDetailsBehaviour.cs" />
      <Compile Include="Assets\HighlightingBehaviour.cs" />
      <Compile Include="Assets\MouseCursorFollowBehaviour.cs" />
      <Compile Include="Assets\MovementBehaviour.cs" />

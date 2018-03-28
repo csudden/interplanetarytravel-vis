@@ -1,4 +1,4 @@
-WebGL
+WindowsStandalone
 SceneListBegin?
 Assets/Scenes/Space_03.unity
 SceneListEnd?
@@ -20,6 +20,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 14a78ce103218f31747458daad28d0f2 Assembly-CSharp.dll:.TimeMarkerBehaviour
 b83009540b71447b717777282285b417 com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.Bloom
 7285365fe3efdee684e7e2ee30bebbdc com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.MotionBlur
+c3e7b781fd6b2d8654ef1248fa294701 Assembly-CSharp.dll:.HighlightingBehaviour
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -188,13 +189,14 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 3d1b89310e77c34bc0c8d7132231345c Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SourceTargetSelectionIllustrationBehaviour
 ff60e8120ead9210ca68f1acde28c495 Assembly-CSharp.dll:.TrailCoordinatorBehaviour
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 d1b8c4da5934cada56f589ef74da6e6c com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessResources
 ff60e8120ead9210ca68f1acde28c495 Assembly-CSharp.dll:.CoordinateSystemScalingBehaviour
 9e4c48f122d669679d66cf52b1cbd2b9 com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.AutoExposure
-4c5282088e4df546ef34abcec33dc472 Assembly-CSharp.dll:.TimelineCoordinatorBehaviour
+636b617f69fe49ca0f19387bb213dcea Assembly-CSharp.dll:.TimelineCoordinatorBehaviour
 853178ec35ebc3a7ff09429b78771c4d com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessDebug
 71f019dc95e0ce22cae6cd1784215c45 Assembly-CSharp.dll:.TagBehaviour
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
