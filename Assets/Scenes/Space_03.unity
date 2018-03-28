@@ -32161,7 +32161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eaa1b44779fd174d87ab535ebc9c4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetIndicatorLine: {fileID: 1556997307513998, guid: e87395018fc55d345808fc6b11b6922f,
+  planetIndicatorLine: {fileID: 1320585213407600, guid: 7de59e2731cf1fe49b88a562a7b6cd4e,
     type: 2}
   planetName: {fileID: 1610624998507278, guid: 80411f8217b02fa4ebec4a8787d06f90, type: 2}
   coordinateSystem: {fileID: 1166307462}
