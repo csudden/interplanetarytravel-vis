@@ -33,8 +33,8 @@ public class DisplayDetailsBehaviour : MonoBehaviour, IPointerEnterHandler, IPoi
 		detailsPanel.SetActive (true);
 		if (tcb.selectedMovementBehaviour != null) {
 			spaceshipName.text = tcb.selectedMovementBehaviour.name;
-			speed.text = tcb.selectedMovementBehaviour.kilometersPerSecond.ToString("N0") + "km/s";
-			size.text = tcb.selectedMovementBehaviour.sizeMeters.ToString("N0") + "m";
+			speed.text = tcb.selectedMovementBehaviour.kilometersPerSecond.ToString("N") + "km/s";
+			size.text = tcb.selectedMovementBehaviour.sizeMeters.ToString("N") + "m";
 			weight.text = tcb.selectedMovementBehaviour.weightKilogramm.ToString("N0") + "kg";
 			payload.text = tcb.selectedMovementBehaviour.payloadKilogramm.ToString("N0") + "kg";
 			thrust.text = tcb.selectedMovementBehaviour.thrustKiloNewton.ToString("N0") + "kN";
