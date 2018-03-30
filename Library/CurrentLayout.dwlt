@@ -276,8 +276,8 @@ MonoBehaviour:
     y: 0
     width: 1050
     height: 660
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -383,19 +383,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Spidergraph
+    - Assets/Prefabs/CoordinateSystem
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Spidergraph
+  - Assets/Prefabs/CoordinateSystem
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Projects\IntVis-Unity\Interplanetary Travelling\iter\interplanetarytravel-vis\interplanetarytravel-vis
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 215}
-    m_SelectedIDs: 782a0000
-    m_LastClickedID: 10872
-    m_ExpandedIDs: 00000000742a0000822a0000a62a0000603a000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 7e2b0000
+    m_LastClickedID: 11134
+    m_ExpandedIDs: 00000000782a0000862a0000aa2a0000623a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -423,7 +423,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000742a0000822a0000a62a0000603a0000
+    m_ExpandedIDs: 00000000782a0000862a0000aa2a0000623a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -450,7 +450,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000bc80000018380000a42a000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -543,7 +543,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: b2f3ffff78f4ffff1af7ffff9afbffff00000000
+    m_ExpandedIDs: f021feffb822feff6825feffaa5bffff825cffff245ffffffeebffffc6ecffff68efffff94fbffff000000007e540000765800001c590000b69f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
