@@ -13,6 +13,7 @@ public class RadarChart : MonoBehaviour {
 	private float[] m_statusValues;
 
 	public TimelineCoordinatorBehaviour tcb;
+	public Text selectedSpaceshipTextfield;
 
 	void OnValidate() {
 		if (m_statusValues.Length != m_panels.Length) {
@@ -24,11 +25,16 @@ public class RadarChart : MonoBehaviour {
 		}
 	}
 
+	void Start(){
+		selectedSpaceshipTextfield.text = "";
+	}
+
 	MovementBehaviour movementBehaviour;
 	void Update(){
 			if (tcb != null) {
 				if (tcb.selectedMovementBehaviour != null && tcb.selectedMovementBehaviour != movementBehaviour) {
 					movementBehaviour = tcb.selectedMovementBehaviour;
+					selectedSpaceshipTextfield.text = tcb.selectedMovementBehaviour.gameObject.name;
 					Debug.Log ("Chart updated");
 					float p = 10f;
 					float multiplier = 1f;
