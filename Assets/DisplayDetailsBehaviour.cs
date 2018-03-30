@@ -65,7 +65,7 @@ public class DisplayDetailsBehaviour : MonoBehaviour, IPointerEnterHandler, IPoi
 				detailsPanel.detailText.text += "Distance To Start:  \n" + (tbOwner.distanceToStart * 1000000d).ToString ("N") + "km" + "\n";
 				detailsPanel.detailText.text += "Distance To Target:  \n" + (tbOwner.distanceToDestination * 1000000d).ToString ("N") + "km" + "\n";
 				detailsPanel.detailText.text += "Distance Complete:  \n" + (tbOwner.distanceComplete * 1000000d).ToString ("N") + "km" + "\n";
-				detailsPanel.detailText.text += "Speed:  " + tbOwner.kilometersPerSecond.ToString ("N") + "km/s" + "\n";
+				detailsPanel.detailText.text += "Max Speed:  " + tbOwner.kilometersPerSecond.ToString ("N") + "km/s" + "\n";
 				/*
 				detailsPanel.detailText.text += "          Size:  " + tbOwner.sizeMeters.ToString ("N") + "m" + "\n";
 				detailsPanel.detailText.text += "  Weight:  " + tbOwner.weightKilogramm.ToString ("N") + "kg" + "\n";
