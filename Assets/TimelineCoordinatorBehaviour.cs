@@ -55,6 +55,8 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
 	public TimeStep timestepSetting = TimeStep.Months;
 
+	public GameObject detailsDisplay;
+
 	MovementBehaviour[] movementBehaviourSpaceships;
 	// Use this for initialization
 	void Start () {
@@ -276,10 +278,11 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		
 
 		CreateTimesteps((int)timestepSetting);
+		CreatePlanetMarkersInTimeline();
 		}
 	}
 
-	void CreatePlanetMarkersInTimeline(){
+	public void CreatePlanetMarkersInTimeline(){
 		// CREATE PLANET MARKERS IN TIMELINE
 		foreach (RectTransform t in planetMarkerContainer){
 			Destroy (t.gameObject);
@@ -354,12 +357,14 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		}
 		CreateTimesteps((int)timestepSetting);
 		Camera.main.GetComponent<CameraFollowBehaviour>().SetObjectToFollow(selectedMovementBehaviour.gameObject);
+
 	}
 
 
 	public GameObject planetSystemOverview;
 
 	// Update is called once per frame
+	GameObject highlightedGameObject;
 	void Update () {
 		GetTimePassed ();
 
@@ -367,8 +372,8 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
 		if (Input.GetMouseButtonDown (0)) {
 			RaycastHit[] hit;
-			hit = Physics.RaycastAll (Camera.main.ScreenPointToRay (Input.mousePosition),2000f);
-			if (hit.Length>0) {
+			hit = Physics.RaycastAll (Camera.main.ScreenPointToRay (Input.mousePosition), 2000f);
+			if (hit.Length > 0) {
 
 				foreach (RaycastHit h in hit) {
 					Debug.Log ("Length: " + hit.Length + "Object: " + h.collider.gameObject.name);
@@ -377,7 +382,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 					}
 
 					if (h.collider.gameObject.tag == "SourceAndDestinationPlanet") {
-						GameObject[] planets = coordinateSystemCreator.planets.ToArray();
+						GameObject[] planets = coordinateSystemCreator.planets.ToArray ();
 
 						foreach (GameObject startP in planets) {
 							if (h.collider.gameObject.name == startP.name) {
@@ -398,6 +403,47 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 			}
 		}
 
+		RaycastHit[] hits;
+		hits = Physics.RaycastAll (Camera.main.ScreenPointToRay (Input.mousePosition), 2000f);
+		if (hits.Length > 0) {
+
+			foreach (RaycastHit h in hits) {
+				if (h.collider.gameObject.layer == 8) {
+					Debug.Log ("over spaceship");
+					DisplayDetailsBehaviour dd = h.collider.gameObject.GetComponent<DisplayDetailsBehaviour>();
+					highlightedGameObject = h.collider.gameObject;
+					if (dd != null) {
+						dd.ShowDetails ();
+					}
+				} else if (h.collider.gameObject.tag == "SourceAndDestinationPlanet") {
+					Debug.Log ("over planet");
+					DisplayDetailsBehaviour dd = h.collider.gameObject.GetComponent<DisplayDetailsBehaviour>();
+					highlightedGameObject = h.collider.gameObject;
+					if (dd != null) {
+						dd.ShowDetails ();
+					}
+				} else if (h.collider.gameObject.tag == "Planets") {
+					Debug.Log ("over planet travel mode");
+					DisplayDetailsBehaviour dd = h.collider.gameObject.GetComponent<DisplayDetailsBehaviour>();
+					highlightedGameObject = h.collider.gameObject;
+					if (dd != null) {
+						dd.ShowDetails ();
+					}
+				}
+			}
+		}else{
+			if (detailsDisplay != null) {
+				if (detailsDisplay.activeSelf == true){
+					if (highlightedGameObject != null) {
+						detailsDisplay.SetActive (false);
+						highlightedGameObject = null;
+					}
+				}
+			}
+		}
+	
+
+
 		// Apply Time Scaling to all available Spaceships TODO: do it more performant instead
 		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
 			mb.SetTimeMultiplier(timeMultiplier);
@@ -412,7 +458,6 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 				}else{
 					currentCameraPositionMarker.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (timelineContainer.rect.width * (-(Camera.main.transform.position.x - startPlanet.transform.position.x) / (float)selectedMovementBehaviour.distanceComplete), 0);
 				}
-				CreatePlanetMarkersInTimeline();
 			}
 
 		}

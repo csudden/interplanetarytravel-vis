@@ -24,6 +24,7 @@ public class UpdateMarkerWithWindowScale : UIBehaviour {
 		Debug.Log ("I've been resized");
 		if (tcb != null) {
 			tcb.CreateTimesteps ();
+			tcb.CreatePlanetMarkersInTimeline ();
 		}
 	}
 }

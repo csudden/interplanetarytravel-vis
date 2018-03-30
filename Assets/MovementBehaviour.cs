@@ -108,13 +108,15 @@ public class MovementBehaviour : MonoBehaviour {
 	public bool GetDestinationOnRight(){
 		return destinationOnRight;
 	}
-
+		
 	// Update is called once per frame
+	float paddingX = 0.003f;
 	void Update () {
 		if (destinationPlanet != null && startPlanet != null) {
 
 			// Update Box Collider
-			boxCollider.size = new Vector3 ((float)distanceToStart, boxCollider.size.y, boxCollider.size.z);
+
+			boxCollider.size = new Vector3 ((float)distanceToStart+paddingX, boxCollider.size.y, boxCollider.size.z);
 			boxCollider.center = new Vector3 (-(float)distanceToStart / 2, boxCollider.center.y, boxCollider.center.z);
 
 			currentPosition = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, 0);

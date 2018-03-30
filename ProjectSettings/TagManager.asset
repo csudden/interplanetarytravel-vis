@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SourcePlanet
-  - DestinationPlanet
   - SourceAndDestinationPlanet
+  - Planets
   layers:
   - Default
   - TransparentFX

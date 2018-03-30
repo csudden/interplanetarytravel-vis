@@ -44,10 +44,10 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/Managed\UnityEngine.dll</HintPath>
+      <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -107,106 +107,101 @@
      <Compile Include="Assets\Runtime\Utils\TextureFormatUtilities.cs" />
      <Compile Include="Assets\Runtime\Utils\TextureLerper.cs" />
      <Compile Include="Assets\Runtime\Utils\XRSettings.cs" />
-     <None Include="Assets\Shaders\Builtins\FinalPass.shader" />
-     <None Include="Assets\Shaders\Debug\Waveform.compute" />
-     <None Include="Assets\Shaders\Builtins\Uber.shader" />
-     <None Include="Assets\Shaders\Builtins\Texture3DLerp.compute" />
-     <None Include="Assets\Shaders\Builtins\CopyStd.shader" />
-     <None Include="Assets\Shaders\Builtins\Bloom.shader" />
-     <None Include="Assets\Shaders\xRLib.hlsl" />
-     <None Include="Assets\Shaders\Builtins\MultiScaleVOUpsample.compute" />
-     <None Include="Assets\Shaders\UnlitTransparent.shader" />
-     <None Include="Assets\Shaders\API\PSSL.hlsl" />
-     <None Include="Assets\Shaders\Debug\Vectorscope.shader" />
-     <None Include="Assets\Shaders\Builtins\GaussianDownsample.compute" />
-     <None Include="Assets\Shaders\Builtins\ScreenSpaceReflections.hlsl" />
-     <None Include="Assets\Shaders\Builtins\DepthOfField.shader" />
-     <None Include="Assets\Shaders\Builtins\DiscardAlpha.shader" />
-     <None Include="Assets\Shaders\Builtins\Lut3DBaker.compute" />
-     <None Include="Assets\Shaders\Builtins\Dithering.hlsl" />
-     <None Include="Assets\Shaders\Colors.hlsl" />
-     <None Include="Assets\Shaders\API\Vulkan.hlsl" />
-     <None Include="Assets\Shaders\Builtins\GrainBaker.shader" />
-     <None Include="Assets\Shaders\Builtins\ExposureHistogram.hlsl" />
-     <None Include="Assets\Shaders\Editor\Trackball.shader" />
-     <None Include="Assets\Shaders\Debug\LightMeter.shader" />
-     <None Include="Assets\Shaders\API\D3D12.hlsl" />
-     <None Include="Assets\Shaders\API\OpenGL.hlsl" />
-     <None Include="Assets\Shaders\Builtins\DiskKernels.hlsl" />
-     <None Include="Assets\Shaders\Builtins\MultiScaleVODownsample2.compute" />
-     <None Include="Assets\Shaders\Builtins\ScalableAO.hlsl" />
-     <None Include="Assets\Shaders\ACES.hlsl" />
-     <None Include="Assets\Shaders\Builtins\MultiScaleVODownsample1.compute" />
-     <None Include="Assets\Shaders\StdLib.hlsl" />
-     <None Include="Assets\Shaders\Builtins\MultiScaleVO.shader" />
-     <None Include="Assets\Shaders\Builtins\DepthOfField.hlsl" />
-     <None Include="Assets\Shaders\Builtins\FastApproximateAntialiasing.hlsl" />
-     <None Include="Assets\Shaders\Builtins\Fog.hlsl" />
-     <None Include="Assets\Shaders\Builtins\MultiScaleVORender.compute" />
-     <None Include="Assets\Shaders\Builtins\ScalableAO.shader" />
-     <None Include="Assets\Shaders\Builtins\SubpixelMorphologicalAntialiasing.hlsl" />
-     <None Include="Assets\Shaders\Builtins\MotionBlur.shader" />
-     <None Include="Assets\Shaders\Builtins\SubpixelMorphologicalAntialiasing.shader" />
-     <None Include="Assets\Shaders\Builtins\Texture2DLerp.shader" />
-     <None Include="Assets\Shaders\Builtins\DeferredFog.shader" />
-     <None Include="Assets\Shaders\API\D3D9.hlsl" />
-     <None Include="Assets\Shaders\Builtins\Lut2DBaker.shader" />
-     <None Include="Assets\Shaders\Builtins\AutoExposure.compute" />
-     <None Include="Assets\Shaders\Debug\Overlays.shader" />
-     <None Include="Assets\Shaders\API\Metal.hlsl" />
-     <None Include="Assets\Shaders\Builtins\Distortion.hlsl" />
-     <None Include="Assets\Shaders\Debug\Vectorscope.compute" />
-     <None Include="Assets\Shaders\Builtins\TemporalAntialiasing.shader" />
-     <None Include="Assets\Shaders\Builtins\SubpixelMorphologicalAntialiasingBridge.hlsl" />
-     <None Include="Assets\Shaders\Builtins\ScreenSpaceReflections.shader" />
-     <None Include="Assets\Shaders\Builtins\Copy.shader" />
-     <None Include="Assets\Shaders\API\D3D11.hlsl" />
-     <None Include="Assets\Shaders\Editor\ConvertToLog.shader" />
-     <None Include="Assets\Shaders\Debug\Waveform.shader" />
-     <None Include="Assets\Shaders\API\XboxOne.hlsl" />
-     <None Include="Assets\Shaders\Sampling.hlsl" />
-     <None Include="Assets\Shaders\Editor\CurveGrid.shader" />
-     <None Include="Assets\Shaders\Debug\Histogram.compute" />
-     <None Include="Assets\Shaders\Debug\Histogram.shader" />
-     <None Include="Assets\Shaders\Builtins\ExposureHistogram.compute" />
+ <Reference Include="Vuforia.UnityExtensions.Editor">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Editor/Vuforia.UnityExtensions.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Vuforia.UnityExtensions">
- <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Networking">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.TestRunner">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.TestRunner">
- <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Timeline">
- <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Timeline">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.TreeEditor">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UIAutomation">
- <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UIAutomation">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/UIAutomation/Editor/UnityEditor.UIAutomation.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.GoogleAudioSpatializer">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.GoogleAudioSpatializer">
- <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.HoloLens">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.SpatialTracking">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.SpatialTracking">
- <HintPath>D:/Software/Unity/2017.3.0b9/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.VR">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Android.Extensions">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+ <HintPath>D:/Software/Unity/2017.3.0p4/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Users/Projektgruppe/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@0.0.18/UnityEngine.Advertisements.dll</HintPath>
+ <HintPath>C:/Users/Projektgruppe/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Advertisements">
+ <HintPath>C:/Users/Projektgruppe/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Users/Projektgruppe/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@0.0.19/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Users/Projektgruppe/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Analytics">
+ <HintPath>C:/Users/Projektgruppe/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/Editor/UnityEditor.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Purchasing">
  <HintPath>C:/Users/Projektgruppe/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Purchasing">
+ <HintPath>C:/Users/Projektgruppe/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/Editor/UnityEditor.Purchasing.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.StandardEvents">
+ <HintPath>C:/Users/Projektgruppe/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

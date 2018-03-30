@@ -11,6 +11,8 @@ public class HighlightingBehaviour : MonoBehaviour, IPointerEnterHandler, IPoint
 
 	public Color highlightingColor;
 
+	public bool additiveColor = false;
+
 	MeshRenderer mr;
 	void Start(){
 		
@@ -29,7 +31,11 @@ public class HighlightingBehaviour : MonoBehaviour, IPointerEnterHandler, IPoint
 	public void OnPointerEnter (PointerEventData eventData)
 	{
 		if (img != null) {
-			img.color = highlightingColor;
+			if (!additiveColor) {
+				img.color = highlightingColor;
+			} else if(additiveColor) {
+				img.color = highlightingColor + img.color;
+			}
 		}
 	}
 	#endregion
@@ -51,7 +57,11 @@ public class HighlightingBehaviour : MonoBehaviour, IPointerEnterHandler, IPoint
 	public void OnPointerExit (PointerEventData eventData)
 	{
 		if (img != null) {
-			img.color = new Color (initialColor.r, initialColor.g, initialColor.b, initialColor.a);
+			if (!additiveColor) {
+				img.color = new Color (initialColor.r, initialColor.g, initialColor.b, initialColor.a);
+			} else if (additiveColor) {
+				img.color = img.color - highlightingColor;
+			}
 		}
 
 		if (mr != null) {
