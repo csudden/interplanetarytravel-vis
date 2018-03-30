@@ -51,7 +51,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 	public Color colorSelected;
 	public Color colorUnselected;
 
-	public enum TimeStep {Minutes, Hours, Days, Months, Years};
+	public enum TimeStep {Minutes, Hours, Days, Months, Years, Decades, Centuries, Millennia};
 
 	public TimeStep timestepSetting = TimeStep.Months;
 
@@ -161,6 +161,9 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		double days = ((selectedMovementBehaviour.distanceComplete / (selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f)));
 		double months = ((selectedMovementBehaviour.distanceComplete / (selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 30)));
 		double years = ((selectedMovementBehaviour.distanceComplete / (selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 365)));
+		double decades = years/10d;
+		double centuries = years/100d;
+		double millennia = years/1000d;
 
 		if (type == (int)TimeStep.Minutes) {
 			timeStep = (int)(containerSize / minutes);
@@ -177,6 +180,15 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 		} else if (type == (int)TimeStep.Years) {
 			timeStep = (int)(containerSize / years);
 			Debug.Log("Years needed:" + years);
+		}else if (type == (int)TimeStep.Decades) {
+			timeStep = (int)(containerSize / decades);
+			Debug.Log("Decades needed:" + decades);
+		} else if (type == (int)TimeStep.Centuries) {
+			timeStep = (int)(containerSize / centuries);
+			Debug.Log("Centuries needed:" + centuries);
+		}else if (type == (int)TimeStep.Millennia) {
+			timeStep = (int)(containerSize / millennia);
+			Debug.Log("Millennia needed:" + millennia);
 		}
 
 
@@ -194,12 +206,12 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
 	double GetTimePassed(){
 
-		double seconds = (selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f));
-		double minutes = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f)));
-		double hours = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f)));
-		double days = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f)));
-		double months = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 30f)));
-		double years = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000f * 60f * 60f * 24f * 365f)));
+		double seconds = (selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000d));
+		double minutes = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000d * 60d)));
+		double hours = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000d * 60d * 60d)));
+		double days = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000d * 60d * 60d * 24d)));
+		double months = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000d * 60d * 60d * 24d * 30d)));
+		double years = ((selectedMovementBehaviour.distanceToStart / ((float)selectedMovementBehaviour.kilometersPerSecond/1000000d * 60d * 60d * 24d * 365d)));
 
 		seconds = Mathf.Abs((int)seconds%60);
 		minutes = Mathf.Abs((int)minutes%60);
@@ -364,7 +376,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 	public GameObject planetSystemOverview;
 
 	// Update is called once per frame
-	GameObject highlightedGameObject;
+	GameObject highlightedGameObject = null;
 	void Update () {
 		GetTimePassed ();
 

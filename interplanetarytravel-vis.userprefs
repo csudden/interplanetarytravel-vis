@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ObjectScalingBehaviour.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TimelineCoordinatorBehaviour.cs">
     <Files>
       <File FileName="Assets\MovementBehaviour.cs" Line="1" Column="1" />
       <File FileName="Assets\CameraFollowBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\TimelineCoordinatorBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\TimelineCoordinatorBehaviour.cs" Line="163" Column="3" />
       <File FileName="Assets\CoordinateSystemScalingBehaviour.cs" Line="1" Column="1" />
       <File FileName="Assets\CoordinateSystemCreator.cs" Line="1" Column="1" />
       <File FileName="Assets\TrailCoordinatorBehaviour.cs" Line="1" Column="1" />
