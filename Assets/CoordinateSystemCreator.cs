@@ -30,7 +30,7 @@ public class CoordinateSystemCreator : MonoBehaviour {
 			if (name == "Sun") {
 				objName.transform.position = new Vector3 (t.position.x, t.position.y + objName.transform.lossyScale.y + 0.6f, t.position.z);
 			} else if (name == "Moon") {
-				objName.transform.position = new Vector3 (t.position.x, t.position.y + objName.transform.lossyScale.y + 0.6f, t.position.z);
+				objName.transform.position = new Vector3 (t.position.x, t.position.y + objName.transform.lossyScale.y + 6f, t.position.z);
 			}else{
 				objName.transform.position = new Vector3 (t.position.x-objName.transform.lossyScale.y*10f, t.position.y+objName.transform.lossyScale.y*60f, t.position.z);
 			}

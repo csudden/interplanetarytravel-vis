@@ -33338,10 +33338,6 @@ Prefab:
       propertyPath: m_Name
       value: NamePlanets
       objectReference: {fileID: 0}
-    - target: {fileID: 1340350495092266, guid: 67cb9a86fe2a73049931c6c317bef469, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67cb9a86fe2a73049931c6c317bef469, type: 2}
   m_IsPrefabParent: 0
