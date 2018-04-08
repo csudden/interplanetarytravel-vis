@@ -6,8 +6,8 @@ public class AdjustScaleOnStartBehaviour : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		// Unity Plane Scale compared to Cube is 10 meters, so divide by 10
-		transform.localScale /= 1f;
+		// Plane was replaced by custom plane, so no division necessary anymore
+		// transform.localScale /= 10f;
 	}
 	
 	// Update is called once per frame
