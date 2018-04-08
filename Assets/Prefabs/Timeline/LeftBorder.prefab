@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224794070844609468}
   - component: {fileID: 222392141291142190}
   - component: {fileID: 114379780704009574}
+  - component: {fileID: 114021236103674734}
   m_Layer: 5
   m_Name: LeftBorder
   m_TagString: Untagged
@@ -28,6 +29,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114021236103674734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1510375060469496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76debcee547bb2c49aa07e5e9659e206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detailsPanel: {fileID: 0}
+  showTagOwner: 0
+  showCustomText: 1
+  customTextTitle: Camera Position
+  customText: 
+  customHeight: 25
 --- !u!114 &114379780704009574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.83235294, g: 1, b: 0.3602941, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -77,5 +95,5 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 6.7, y: 51.1}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0}

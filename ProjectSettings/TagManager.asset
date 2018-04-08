@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SourceAndDestinationPlanet
   - Planets
+  - Spidergraph
   layers:
   - Default
   - TransparentFX

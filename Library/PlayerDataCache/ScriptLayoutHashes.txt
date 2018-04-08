@@ -1,6 +1,6 @@
 WindowsStandalone
 SceneListBegin?
-Assets/Scenes/Space_03.unity
+Assets/Scenes/Space_05.unity
 SceneListEnd?
 42d3f1628283c56b568e7ddfc535642f com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessLayer
 702524a762b34a31b3975e810217bf52 com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.ColorGrading
@@ -18,6 +18,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 14a78ce103218f31747458daad28d0f2 Assembly-CSharp.dll:.TimeMarkerBehaviour
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AdjustScaleOnStartBehaviour
 b83009540b71447b717777282285b417 com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.Bloom
 7285365fe3efdee684e7e2ee30bebbdc com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.MotionBlur
 c0ca06e74434e685366a003b78e26017 Assembly-CSharp.dll:.HighlightingBehaviour
@@ -242,7 +243,7 @@ ec9d667e572986961825a1c1624709ee Assembly-CSharp.dll:.CameraFollowBehaviour
 f3a7d6b7ba2834fa390d7aee0d4a2173 com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessVolume
 35e865cc5175d234df47214c8f8ec47c com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.Grain
 62a2e00b0bc2c3e206b20b2a66df2735 com.unity.postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.AmbientOcclusion
-290387aebcb153298597ab010379a7e3 Assembly-CSharp.dll:.DisplayDetailsBehaviour
+517b5bfecb2b492d0b7fdb6d5f8716e8 Assembly-CSharp.dll:.DisplayDetailsBehaviour
 2d5b4716ec5f44feb7e6ed4eb3af774e Assembly-CSharp.dll:.MovementBehaviour
 26215f135eeb48d8fa1189498c107f6c Vuforia.UnityExtensions.dll:Vuforia.AnchorBehaviour
 0561521e336e270e6e5a9c61387cb838 Vuforia.UnityExtensions.dll:Vuforia.AnchorInputListenerBehaviour
@@ -314,3 +315,4 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 3d1b89310e77c34bc0c8d7132231345c Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
+142cd9ec6004d256fee60879549480e8 Assembly-CSharp.dll:.FloatingOrigin

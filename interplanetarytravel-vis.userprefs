@@ -1,24 +1,26 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TimelineCoordinatorBehaviour.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\DisplayDetailsBehaviour.cs">
     <Files>
-      <File FileName="Assets\MovementBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\CameraFollowBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\TimelineCoordinatorBehaviour.cs" Line="163" Column="3" />
+      <File FileName="Assets\MovementBehaviour.cs" Line="142" Column="15" />
+      <File FileName="Assets\TimelineCoordinatorBehaviour.cs" Line="273" Column="6" />
+      <File FileName="Assets\CameraFollowBehaviour.cs" Line="26" Column="39" />
       <File FileName="Assets\CoordinateSystemScalingBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\CoordinateSystemCreator.cs" Line="1" Column="1" />
+      <File FileName="Assets\CoordinateSystemCreator.cs" Line="33" Column="112" />
       <File FileName="Assets\TrailCoordinatorBehaviour.cs" Line="1" Column="1" />
       <File FileName="Assets\TimeMarkerBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\ObjectScalingBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\ObjectScalingBehaviour.cs" Line="20" Column="5" />
       <File FileName="Assets\TagBehaviour.cs" Line="1" Column="1" />
       <File FileName="Assets\UpdateMarkerWithWindowScale.cs" Line="1" Column="1" />
       <File FileName="Assets\Spidergraph\RadarChart.cs" Line="1" Column="1" />
       <File FileName="Assets\Shaders\UnlitTransparent.shader" Line="1" Column="1" />
       <File FileName="Assets\HighlightingBehaviour.cs" Line="1" Column="1" />
       <File FileName="Assets\SourceTargetSelectionIllustrationBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\DisplayDetailsBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\DisplayDetailsBehaviour.cs" Line="78" Column="38" />
       <File FileName="Assets\MouseCursorFollowBehaviour.cs" Line="1" Column="1" />
       <File FileName="Assets\DetailPanelBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\AdjustScaleOnStartBehaviour.cs" Line="10" Column="28" />
+      <File FileName="Assets\FloatingOrigin.cs" Line="109" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

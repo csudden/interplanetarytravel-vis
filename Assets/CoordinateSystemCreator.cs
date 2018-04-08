@@ -21,16 +21,18 @@ public class CoordinateSystemCreator : MonoBehaviour {
 			++i;
 			GameObject objIndicator = Instantiate(planetIndicatorLine, t.position, Quaternion.Euler(-90,0,0),coordinateSystem.transform);
 
-			Vector3 offsetText = new Vector3 (t.position.x, t.position.y, t.position.z);
-			GameObject objName = Instantiate(planetName, offsetText, Quaternion.Euler(0,0,0),planetNameContainer.transform);
+			Vector3 offsetText = new Vector3 (t.position.x, t.position.y+0.1f, t.position.z);
+			GameObject objName = Instantiate(planetName, Vector3.zero, Quaternion.Euler(0,0,0),planetNameContainer.transform);
 
 			planets.Add(t.gameObject);
 
 			string name = t.gameObject.name;
-			if (name == "Sun" || name == "Moon"){
-				objName.transform.position = new Vector3 (t.position.x, t.position.y+objName.transform.lossyScale.y+6, t.position.z);
-			} else {
-				objName.transform.position = new Vector3 (t.position.x, t.position.y, t.position.z);
+			if (name == "Sun") {
+				objName.transform.position = new Vector3 (t.position.x, t.position.y + objName.transform.lossyScale.y + 0.6f, t.position.z);
+			} else if (name == "Moon") {
+				objName.transform.position = new Vector3 (t.position.x, t.position.y + objName.transform.lossyScale.y + 0.6f, t.position.z);
+			}else{
+				objName.transform.position = new Vector3 (t.position.x-objName.transform.lossyScale.y*10f, t.position.y+objName.transform.lossyScale.y*60f, t.position.z);
 			}
 
 			objName.GetComponent<TextMesh>().text = name;

@@ -139,7 +139,7 @@ public class MovementBehaviour : MonoBehaviour {
 			}
 
 			if (distanceToDestination > 0d) {
-				distanceToStart += (kilometersPerSecond / 1000000d) * (double)Time.fixedDeltaTime * (double)timeMultiplier;
+				distanceToStart += (kilometersPerSecond / 1000000d) * (double)Time.deltaTime * (double)timeMultiplier;
 			}
 				
 			if (distanceComplete > distanceToStart) {

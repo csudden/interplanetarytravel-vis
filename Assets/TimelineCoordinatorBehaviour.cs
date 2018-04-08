@@ -284,7 +284,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 				}
 
 				SelectSpaceship (selectedMovementBehaviour.gameObject);
-				Camera.main.GetComponent<CameraFollowBehaviour> ().ResetFocus (false);
+				Camera.main.GetComponent<CameraFollowBehaviour> ().SetInitialFocus();
 				mb.StartJourney ();
 			}
 		
@@ -407,6 +407,7 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 
 								if (startPlanet && destinationPlanet != null) {
 									StartJourneyAllShips ();
+
 								}
 							}
 						}
@@ -414,47 +415,6 @@ public class TimelineCoordinatorBehaviour : MonoBehaviour, IPointerDownHandler {
 				}
 			}
 		}
-
-		RaycastHit[] hits;
-		hits = Physics.RaycastAll (Camera.main.ScreenPointToRay (Input.mousePosition), 2000f);
-		if (hits.Length > 0) {
-
-			foreach (RaycastHit h in hits) {
-				if (h.collider.gameObject.layer == 8) {
-					Debug.Log ("over spaceship");
-					DisplayDetailsBehaviour dd = h.collider.gameObject.GetComponent<DisplayDetailsBehaviour>();
-					highlightedGameObject = h.collider.gameObject;
-					if (dd != null) {
-						dd.ShowDetails ();
-					}
-				} else if (h.collider.gameObject.tag == "SourceAndDestinationPlanet") {
-					Debug.Log ("over planet");
-					DisplayDetailsBehaviour dd = h.collider.gameObject.GetComponent<DisplayDetailsBehaviour>();
-					highlightedGameObject = h.collider.gameObject;
-					if (dd != null) {
-						dd.ShowDetails ();
-					}
-				} else if (h.collider.gameObject.tag == "Planets") {
-					Debug.Log ("over planet travel mode");
-					DisplayDetailsBehaviour dd = h.collider.gameObject.GetComponent<DisplayDetailsBehaviour>();
-					highlightedGameObject = h.collider.gameObject;
-					if (dd != null) {
-						dd.ShowDetails ();
-					}
-				}
-			}
-		}else{
-			if (detailsDisplay != null) {
-				if (detailsDisplay.activeSelf == true){
-					if (highlightedGameObject != null) {
-						detailsDisplay.SetActive (false);
-						highlightedGameObject = null;
-					}
-				}
-			}
-		}
-	
-
 
 		// Apply Time Scaling to all available Spaceships TODO: do it more performant instead
 		foreach (MovementBehaviour mb in movementBehaviourSpaceships) {
