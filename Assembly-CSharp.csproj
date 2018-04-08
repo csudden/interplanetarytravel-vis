@@ -69,6 +69,7 @@
      <Compile Include="Assets\TagBehaviour.cs" />
      <Compile Include="Assets\TimelineCoordinatorBehaviour.cs" />
      <Compile Include="Assets\TimeMarkerBehaviour.cs" />
+     <Compile Include="Assets\ToggleRendering.cs" />
      <Compile Include="Assets\TrailCoordinatorBehaviour.cs" />
      <Compile Include="Assets\UpdateMarkerWithWindowScale.cs" />
      <None Include="Assets\Shaders\Builtins\FinalPass.shader" />

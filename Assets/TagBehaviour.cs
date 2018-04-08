@@ -9,7 +9,7 @@ public class TagBehaviour : MonoBehaviour {
 	LineRenderer lr;
 	void Start(){
 		lr = GetComponent<LineRenderer> ();
-		if (lr != null) {
+		if (lr != null && gameObject.layer != 5) {
 			owner = gameObject.transform.parent.gameObject;
 		}
 

@@ -21,6 +21,10 @@ public class CoordinateSystemCreator : MonoBehaviour {
 			++i;
 			GameObject objIndicator = Instantiate(planetIndicatorLine, t.position, Quaternion.Euler(-90,0,0),coordinateSystem.transform);
 
+			if (objIndicator.GetComponentInChildren<TagBehaviour> () != null) {
+				objIndicator.GetComponentInChildren<TagBehaviour> ().owner = t.gameObject;
+			}
+
 			Vector3 offsetText = new Vector3 (t.position.x, t.position.y+0.1f, t.position.z);
 			GameObject objName = Instantiate(planetName, Vector3.zero, Quaternion.Euler(0,0,0),planetNameContainer.transform);
 

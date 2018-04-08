@@ -68,9 +68,9 @@ public class DisplayDetailsBehaviour : MonoBehaviour, IPointerEnterHandler, IPoi
 	Rect rectTmp;
 	public void OnPointerEnter (PointerEventData eventData)
 	{
-		Debug.Log ("Entered");
+		//Debug.Log ("Entered");
 		detailsPanel.gameObject.SetActive (true);
-		Debug.Log(detailsPanel.gameObject.activeSelf +  " active");
+		//Debug.Log(detailsPanel.gameObject.activeSelf +  " active");
 		if (showObjectName) {
 			Debug.Log (gameObject.name);
 			detailsPanelRect = detailsPanel.GetComponent<RectTransform> ();

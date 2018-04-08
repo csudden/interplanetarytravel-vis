@@ -36,7 +36,10 @@ GameObject:
   - component: {fileID: 4254091263561204}
   - component: {fileID: 120799654448566366}
   - component: {fileID: 114397532805338568}
-  m_Layer: 0
+  - component: {fileID: 114494746889580768}
+  - component: {fileID: 65983980649017750}
+  - component: {fileID: 114163226207986938}
+  m_Layer: 5
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,6 +73,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65983980649017750
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1648452924338510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.001, y: 0.001, z: 100000}
+  m_Center: {x: 0, y: 0, z: 50000}
+--- !u!114 &114163226207986938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1648452924338510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec69bcd84a32f854aa7f20091bc3f2ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
 --- !u!114 &114397532805338568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -82,6 +109,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleIntensity: 80
+--- !u!114 &114494746889580768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1648452924338510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76debcee547bb2c49aa07e5e9659e206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detailsPanel: {fileID: 0}
+  showTagOwner: 1
+  showCustomText: 0
+  showObjectName: 0
+  customTextTitle: Planet
+  customText: 
+  customHeight: 140
 --- !u!120 &120799654448566366
 LineRenderer:
   m_ObjectHideFlags: 1
