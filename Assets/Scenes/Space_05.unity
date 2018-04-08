@@ -20721,6 +20721,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1645929700}
+        m_MethodName: ToggleActiveState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
@@ -36322,6 +36333,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1645929699}
+  - component: {fileID: 1645929700}
   m_Layer: 0
   m_Name: Starfield
   m_TagString: Untagged
@@ -36343,6 +36355,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1645929700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1645929698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685cdbda47a845b4d859765fdcabe5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lr: []
+  mr: []
 --- !u!4 &1655146490 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: da1ddbc8c287d824795ded4f7f8214dd, type: 3}
@@ -37506,7 +37531,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -590299063
+  randomSeed: 1407349899
   InitialModule:
     serializedVersion: 3
     enabled: 1

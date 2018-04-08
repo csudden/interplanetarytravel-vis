@@ -24,6 +24,10 @@ public class ToggleRendering : MonoBehaviour {
 		
 	}
 
+	public void ToggleActiveState(){
+		gameObject.SetActive (!gameObject.activeSelf);
+	}
+
 	public void Show(){
 		
 		foreach (LineRenderer l in lr) {
